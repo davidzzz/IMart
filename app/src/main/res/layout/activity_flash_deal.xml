@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#fff"
-    tools:context="com.ushare.FlashDealActivity">
+    tools:context="com.imart.shop.FlashDealActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -55,8 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/harga_asli"

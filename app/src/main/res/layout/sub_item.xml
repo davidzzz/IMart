@@ -9,21 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lytThumb"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        android:background="@drawable/shape"
-        >
+        android:orientation="vertical">
         <ImageView
             android:id="@+id/imgThumb"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@drawable/shape"
             android:scaleType="centerCrop"
             android:src="@drawable/loading" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/shape" />
     </LinearLayout>
 
         <LinearLayout

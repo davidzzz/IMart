@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#fff"
-    tools:context="com.ushare.FlashDealActivity">
+    tools:context="com.imart.shop.FlashDealActivity">
 
     <include
         android:id="@+id/toolbar"

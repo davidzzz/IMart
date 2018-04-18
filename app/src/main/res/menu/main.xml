@@ -1,8 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.ushare.MainActivity">
+    tools:context="com.imart.shop.MainActivity">
 
+    <item android:id="@+id/search"
+        android:title="Search"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_search"/>
     <item
         android:id="@+id/shop"
         android:icon="@drawable/shop"

@@ -1,25 +1,43 @@
 {
   "project_info": {
-    "project_number": "405838264341",
-    "project_id": "restoran-178706"
+    "project_number": "783445882903",
+    "firebase_url": "https://imart-6983c.firebaseio.com",
+    "project_id": "imart-6983c",
+    "storage_bucket": "imart-6983c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:405838264341:android:033c90d3e6d2a230",
+        "mobilesdk_app_id": "1:783445882903:android:d3388898ab84d17d",
         "android_client_info": {
-          "package_name": "com.ushare"
+          "package_name": "com.imart.shop"
         }
       },
       "oauth_client": [
         {
-          "client_id": "405838264341-gpocabpe14tjme4jjsvahfti9soh9or6.apps.googleusercontent.com",
+          "client_id": "783445882903-fdain54o3rvg8ghhkdpa31ch9dkae6au.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imart.shop",
+            "certificate_hash": "a143b1adeca8876316787d19c8de519736402fb5"
+          }
+        },
+        {
+          "client_id": "783445882903-5jf5uet5aul03c0fcpk2thud2l14g09h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imart.shop",
+            "certificate_hash": "878e3f66f29b8262358a97ec32c33a73fa587528"
+          }
+        },
+        {
+          "client_id": "783445882903-0c5i6o49nrui578oj6ero9fh0j53413k.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDZn0L2QP63u1GybZViGcW3nMWepBsHD8M"
+          "current_key": "AIzaSyAKJSEmNQ9OtgKIzifjdNQBq50xb4cj_H0"
         }
       ],
       "services": {
@@ -27,11 +45,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783445882903-0c5i6o49nrui578oj6ero9fh0j53413k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

@@ -138,56 +138,6 @@
                 </RadioGroup>
             </LinearLayout><!-- end status produk -->
 
-
-            <!-- halal produk -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Food"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <RadioGroup
-                    android:id="@+id/groupHalal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/nonHalal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NON HALAL"
-                        android:buttonTint="@color/colorPrimary"
-                        android:textSize="10sp" />
-
-                    <RadioButton
-                        android:id="@+id/halal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HALAL"
-                        android:checked="true"
-                        android:buttonTint="@color/colorPrimary"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginStart="15dp"
-                        android:textSize="10sp" />
-
-
-                </RadioGroup>
-            </LinearLayout><!-- end halal produk -->
-
             <!-- Category produk -->
             <LinearLayout
                 android:layout_width="match_parent"

@@ -48,7 +48,7 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <com.ushare.view.ExpandableHeightListView
+                <com.imart.shop.view.ExpandableHeightListView
                     android:id="@+id/listview"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -108,6 +108,25 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/cek"
                         android:text="Pesan di tempat"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:id="@+id/layout_antar"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jam Pengantaran"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/jam"/>
                 </LinearLayout>
 
 

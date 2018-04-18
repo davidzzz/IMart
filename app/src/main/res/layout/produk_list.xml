@@ -14,10 +14,11 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
 
-        <ListView
+        <GridView
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:divider="@null"
+            android:numColumns="2"
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
@@ -111,6 +112,7 @@
 
     <ProgressBar
         android:id="@+id/prgLoading"
+        android:indeterminateDrawable="@drawable/progress_indeterminate"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true" />

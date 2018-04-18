@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Gurita Resto Apps</string>
+    <string name="app_name">IMART</string>
     <string name="action_search">Search</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
@@ -26,14 +26,11 @@
     <string name="error_invalid_password">Password tidak valid</string>
     <string name="error">Jaringan internet terputus! , \npastikan data internet anda aktif.</string>
     <!--gcm id-->
-    <string name="gcm_id">745372770705</string>
+    <string name="gcm_id">224146787679</string>
 
     <!-- bagian button intro -->
     <string name="skip_button">SKIP</string>
     <string name="done_button">SELESAI</string>
-
-    <!-- bagian Facebook id disini-->
-    <string name="id_facebook">1619625128347156</string>
 
     <string name="additem">Tambah</string>
     <string name="deleteItem">Hapus</string>
@@ -82,11 +79,12 @@
     <string name="status">Status</string>
 
     <!--bagian intro-->
-    <string name="welcome">Selamat Datang di \n Gurita Resto</string>
-    <string name="intro3">Jadilah Langganan dan Nikmati keseruaan mu.\nPilihan semua barang murah dalam gengaman anda, dan langsung kami antar di rumah anda.</string>
-    <string name="intro2">Keseruan menemukan transaksi murah bermutu langsung dari rumah sendiri.\n OJEK - TAXI -MAKANAN - MINUMAN - BENGKEL</string>
-    <string name="intro1">Singkat waktu, Semua yang anda butuhkan telah kami siapkan dan kami antar.\nMilikilah waktu dan kemudahan dengan Aplikasi Gurita Resto.</string>
+    <string name="welcome">Selamat Datang di \n IMart</string>
+    <string name="intro3">Berbelanja jauh lebih leluasa dan bebas dimanapun dan kapanpun tanpa ribet atau tanpa lelet</string>
+    <string name="intro2">Pilihan ada dalam genggaman, segalanya ada dalam setiap kesempatan</string>
+    <string name="intro1">Memindahkan pasar dengan mudah ke rumah sendiri</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_sub_kategori">SubKategoriActivity</string>
 </resources>

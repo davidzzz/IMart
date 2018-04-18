@@ -3,11 +3,11 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="#222222">
-        <com.ushare.intro.AppIntroViewPager
+        <com.imart.shop.intro.AppIntroViewPager
             android:id="@+id/view_pager"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
-        </com.ushare.intro.AppIntroViewPager>
+        </com.imart.shop.intro.AppIntroViewPager>
         <LinearLayout
             android:id="@+id/bottom"
             android:background="#00000000"

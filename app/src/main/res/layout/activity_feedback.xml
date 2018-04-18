@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ushare.FeedbackActivity">
+    tools:context="com.imart.shop.FeedbackActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -71,24 +71,6 @@
 
             <RatingBar
                 android:id="@+id/pelayanan"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_margin="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="14dp"
-                    android:text="RASA"/>
-
-            <RatingBar
-                android:id="@+id/rasa"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2" />

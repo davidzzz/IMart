@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.17"
-        android:background="@drawable/gorden">
+        android:background="@drawable/gradasi_spin">
 
         <ImageView
             android:id="@+id/iv_wheel"
@@ -95,7 +95,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="35dp"
-            android:src="@drawable/wheel" />
+            android:src="@drawable/spin" />
 
         <RelativeLayout
             android:layout_width="match_parent"

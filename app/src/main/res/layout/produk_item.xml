@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.ushare.view.SquareImage
+        <com.imart.shop.view.SquareImage
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
@@ -36,7 +36,7 @@
                 android:textColor="@color/main_color_grey_900" />
 
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
@@ -45,11 +45,17 @@
                     android:id="@+id/textharga"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
                     android:text="Rp 5000"
                     android:textColor="@color/textColorPrimaryBlack"
                     android:textSize="19sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/satuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryBlack"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -77,13 +83,6 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtHalal"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
-                android:layout_marginRight="5dp"
-                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:id="@+id/lytqty"

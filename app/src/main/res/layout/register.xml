@@ -24,29 +24,12 @@
         android:orientation="vertical"
         android:padding="20dp" >
 
-
-        <com.ushare.view.MaterialRippleLayout
-            style="@style/RippleStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_background_empty" >
-
-            <Button
-                android:id="@+id/btnFace"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_bg_fb"
-                android:text="Register with Facebook"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-        </com.ushare.view.MaterialRippleLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="5dp" />
 
-        <com.ushare.view.MaterialRippleLayout
+        <com.imart.shop.view.MaterialRippleLayout
             style="@style/RippleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +43,7 @@
                 android:text="Register with Google"
                 android:textColor="#fff"
                 android:textStyle="bold" />
-        </com.ushare.view.MaterialRippleLayout>
+        </com.imart.shop.view.MaterialRippleLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,7 +135,7 @@
             android:textColorHint="@color/main_color_grey_500"
             android:textCursorDrawable="@null" />
 
-        <com.ushare.view.MaterialRippleLayout
+        <com.imart.shop.view.MaterialRippleLayout
             style="@style/RippleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -166,7 +149,7 @@
                 android:text="Register"
                 android:textColor="#fff"
                 android:textStyle="bold" />
-        </com.ushare.view.MaterialRippleLayout>
+        </com.imart.shop.view.MaterialRippleLayout>
 
 
         <Button

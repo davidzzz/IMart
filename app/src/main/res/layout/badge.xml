@@ -2,16 +2,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/badge_layout"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="7dp">
 
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
@@ -20,13 +21,11 @@
     </RelativeLayout>
     <TextView
         android:id="@+id/badge"
-        android:layout_width="11dp"
+        android:layout_width="wrap_content"
         android:layout_height="14dp"
         android:layout_alignRight="@id/relative_layout"
-
         android:text="0"
         android:textColor="#faf6f6"
-
         android:textSize="13sp"
         android:textStyle="bold" />
 </RelativeLayout>
