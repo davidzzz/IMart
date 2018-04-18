@@ -49,17 +49,17 @@ public class RegisterActivity extends AppCompatActivity implements GoogleSign.In
         pass = (EditText) findViewById(R.id.pass);
 
         //button
-        btnGl = (Button) findViewById(R.id.btnGogle);
-        ToLogin = (Button) findViewById(R.id.txtToLogin);
+        //btnGl = (Button) findViewById(R.id.btnGogle);
+        //ToLogin = (Button) findViewById(R.id.txtToLogin);
         btnRegis = (Button) findViewById(R.id.btnRegis);
 
 
         // FragmentActivity and interface listener
         googleSign = new GoogleSign(this, this);
 
-        ToLogin.setOnClickListener(this);
+        //ToLogin.setOnClickListener(this);
         btnRegis.setOnClickListener(this);
-        btnGl.setOnClickListener(this);
+        //btnGl.setOnClickListener(this);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleSign.In
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
-            case R.id.btnGogle:
+            /*case R.id.btnGogle:
                 // button di google di clik eksekusi ketika ada internet
                 if (Utils.isConnectedToInternet(this)) {
                     // ketika konek internet ekseskusi
@@ -82,19 +82,19 @@ public class RegisterActivity extends AppCompatActivity implements GoogleSign.In
                     Toast.makeText(this, "tidak ada koneksi pak", Toast.LENGTH_SHORT).show();
                 }
 
-                break;
+                break;*/
             case R.id.btnRegis:
                 // ini button singin biasa
                 validateEditext();
                 break;
 
-            case R.id.txtToLogin:
+            /*case R.id.txtToLogin:
                 // ini button singin biasa
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 finish();
 
-                break;
+                break;*/
         }
     }
 

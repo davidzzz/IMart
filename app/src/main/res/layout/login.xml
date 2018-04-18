@@ -1,15 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_login" >
+    android:layout_height="match_parent" >
 
     <View
         android:id="@+id/opacityFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:alpha="0.7"
-        android:background="@android:color/black" >
+        android:background="@android:color/white" >
     </View>
 
     <LinearLayout
@@ -26,18 +24,43 @@
             android:layout_height="1dp"
             android:layout_margin="5dp" />
 
+        <EditText
+            android:id="@+id/UserName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="@color/textColorPrimaryBlack"
+            android:textColorHint="@color/main_color_grey_500"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="@color/textColorPrimaryBlack"
+            android:textColorHint="@color/main_color_grey_500"
+            android:textCursorDrawable="@null" />
+
         <com.imart.shop.view.MaterialRippleLayout
-            style="@style/RippleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_background_empty" >
 
             <Button
-                android:id="@+id/btnGogle"
+                android:id="@+id/btnSign"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/button_bg_gmail"
-                android:text="Login with Google"
+                android:text="Login"
                 android:textColor="#fff"
                 android:textStyle="bold" />
         </com.imart.shop.view.MaterialRippleLayout>
@@ -66,7 +89,6 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="OR"
-                android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -78,48 +100,19 @@
                 android:background="@color/main_color_grey_300" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/UserName"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_top_bg"
-            android:hint="Masukan Email..."
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:text=""
-            android:textColor="@color/textColorPrimaryBlack"
-            android:textColorHint="@color/main_color_grey_500"
-            android:textCursorDrawable="@null" />
-
-        <EditText
-            android:id="@+id/pass"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edittext_top_bg"
-            android:hint="Masukan Kata Sandi..."
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:text=""
-            android:textColor="@color/textColorPrimaryBlack"
-            android:textColorHint="@color/main_color_grey_500"
-            android:textCursorDrawable="@null" />
-
         <com.imart.shop.view.MaterialRippleLayout
             style="@style/RippleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_background_empty" >
 
-            <Button
-                android:id="@+id/btnSign"
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnGoogle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_bg_gmail"
-                android:text="Login"
                 android:textColor="#fff"
                 android:textStyle="bold" />
+
         </com.imart.shop.view.MaterialRippleLayout>
 
         <LinearLayout
@@ -138,8 +131,7 @@
                 android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:layout_weight="2.5"
-                android:text="Register here"
-                android:textColor="#FFF"
+                android:text="Daftar"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -150,7 +142,6 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="|"
-                android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -160,9 +151,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:layout_weight="2.5"
-                android:text="Forgot Password"
+                android:text="Lupa Password"
                 android:background="@null"
-                android:textColor="#FFF"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>

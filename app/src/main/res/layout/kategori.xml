@@ -89,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:divider="@null"
                     android:numColumns="2"
-                    android:layout_margin="2dp"
                     android:visibility="gone">
 
                 </com.imart.shop.view.ExpandableHeightGridView>

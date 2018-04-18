@@ -3,6 +3,7 @@ package com.imart.shop;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -21,6 +23,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.ConnectionResult;
 
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.plus.PlusOneButton;
 import com.imart.shop.app.myapp;
 import com.imart.shop.util.Constant;
 import com.imart.shop.util.GoogleSign;
@@ -33,7 +37,8 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoLoginGoogleCallback, OnClickListener {
     Button txtRegis, txtForgot;
-    private Button btnGl, btnSign;
+    private Button btnSign;
+    SignInButton btnGl;
     EditText username, pass;
     GoogleSign googleSign; // Google sign-in
     String strEmail, strAlamat, strPass, strMessage, strName, strPoin, strTelp, strPassengerId,strAkses,strSex,latitude,long_latitude;
@@ -59,8 +64,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
         // FragmentActivity and interface listener
         googleSign = new GoogleSign(this, this);
 
-        btnGl = (Button) findViewById(R.id.btnGogle);
+        btnGl = (SignInButton) findViewById(R.id.btnGoogle);
         btnSign = (Button) findViewById(R.id.btnSign);
+        for (int i = 0; i < btnGl.getChildCount(); i++) {
+            View v = btnGl.getChildAt(i);
+
+            if (v instanceof TextView) {
+                TextView tv = (TextView) v;
+                tv.setText("Sign In With Google");
+                //tv.setTextColor(Color.WHITE);
+                //tv.setBackgroundColor(Color.RED);
+            }
+        }
 
         // bikin button di klik
         btnGl.setOnClickListener(this);
@@ -77,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
-            case R.id.btnGogle:
+            case R.id.btnGoogle:
                 // button di google di clik eksekusi ketika ada internet
                 if (Utils.isConnectedToInternet(this)) {
                     // ketika konek internet ekseskusi
@@ -223,7 +238,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
                 ProfileImg = "-";
             }
             final ProgressDialog loading = ProgressDialog.show(this, "Loading..", "Tunggu ya..", false, false);
-            String URL_LOGIN = Constant.URLAPI + "key=" + Constant.KEY + "&tag=Login_ggl" + "&email=" + strEmail;
+            String URL_LOGIN = Constant.URLAPI + "key=" + Constant.KEY + "&tag=Login_ggl" + "&email=" + strEmail + "&nama=" + strName;
             JsonObjectRequest jsonLogin = new JsonObjectRequest(URL_LOGIN,
                     new Response.Listener<JSONObject>() {
                         @Override
