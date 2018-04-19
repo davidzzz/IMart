@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -129,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleSign.In
             URL_REG = Constant.URLAPI+"key=" + Constant.KEY + "&tag=register&email="+em+"&pass="+ps+"&nama="+nm+"&tlp="+tl;
             final ProgressDialog loading = ProgressDialog.show(this, "Loading..", "Sedang register...", false, false);
 
-            JsonObjectRequest jsonLogin = new JsonObjectRequest(URL_REG,
+            JsonObjectRequest jsonLogin = new JsonObjectRequest(Request.Method.GET, URL_REG, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -181,7 +182,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleSign.In
         URL_REG = Constant.URLAPI + "key=" + Constant.KEY + "&tag=regsgoogle&email=" + account.getEmail() + "&nama=" + account.getDisplayName().replace(" ", "%20");
         final ProgressDialog loading = ProgressDialog.show(this, "Loading..", "Tunggu ya..", false, false);
 
-        JsonObjectRequest jsonLogin = new JsonObjectRequest(URL_REG,
+        JsonObjectRequest jsonLogin = new JsonObjectRequest(Request.Method.GET, URL_REG, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

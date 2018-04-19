@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -163,7 +164,7 @@ public class WishlistActivity extends AppCompatActivity {
     private void ambilData() {
         String URL = Constant.URLADMIN + "api/wishlist.php?key=" + Constant.KEY + "&tag=list";
         loading = ProgressDialog.show(this, "Loading", "Sedang mengambil data", false, true);
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 list.clear();

@@ -290,7 +290,7 @@ public class FragOrderProses extends Fragment implements SwipeRefreshLayout.OnRe
     private void ambilData() {
         String tgl = tanggal.getText().toString().equals("TANGGAL") ? "" : tanggal.getText().toString();
         URL_ORDER += "&search=" + search.getText().toString() + "&tanggal=" + tgl;
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_ORDER, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_ORDER, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 // Dismissing progress dialog\

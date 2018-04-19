@@ -46,6 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -216,7 +217,7 @@ public class CartActivity extends AppCompatActivity
     public void daftarKategori() {
         String URLKATE = Constant.URLAPI + "key=" + Constant.KEY + "&tag=" + Constant.TAG_SUB;
         listAntar = new ArrayList<>();
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URLKATE, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLKATE, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -460,7 +461,7 @@ public class CartActivity extends AppCompatActivity
     }
 
     private void rekening() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_REK, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_REK, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -479,7 +480,7 @@ public class CartActivity extends AppCompatActivity
     }
 
     private void konfigurasi() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_CONF, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_CONF, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -498,7 +499,7 @@ public class CartActivity extends AppCompatActivity
     }
 
     private void lokasiToko() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_LOKASI, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_LOKASI, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {

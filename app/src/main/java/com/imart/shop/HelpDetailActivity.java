@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -57,7 +58,7 @@ public class HelpDetailActivity extends AppCompatActivity implements OnMapReadyC
 
     private void ambilData() {
         String URL = Constant.URLAPI + "key=" + Constant.KEY + "&tag=helpdetail&id=" + id;
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -90,7 +91,7 @@ public class HelpDetailActivity extends AppCompatActivity implements OnMapReadyC
 
     private void lokasiToko() {
         String URL_LOKASI = Constant.URLAPI + "key=" + Constant.KEY + "&tag=lokasiToko";
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_LOKASI, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_LOKASI, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {

@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -116,7 +117,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
     private void getData() {
         arraylist.clear();
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_MENU, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_MENU, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 parseJsonKategory(response);

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -204,7 +205,7 @@ public class FragmentHistory extends Fragment implements SwipeRefreshLayout.OnRe
     private void ambilData() {
         String tgl = tanggal.getText().toString().equals("TANGGAL") ? "" : tanggal.getText().toString();
         URL_ORDER += "&search=" + search.getText().toString() + "&tanggal=" + tgl;
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_ORDER, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_ORDER, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 itemList.clear();

@@ -100,20 +100,10 @@
                 android:background="@color/main_color_grey_300" />
         </LinearLayout>
 
-        <com.imart.shop.view.MaterialRippleLayout
-            style="@style/RippleStyle"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_background_empty" >
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/btnGoogle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-
-        </com.imart.shop.view.MaterialRippleLayout>
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"

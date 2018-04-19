@@ -16,6 +16,7 @@ import java.util.List;
 
 import com.android.volley.Cache;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -275,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void Banner() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URLBANNER, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLBANNER, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -311,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void Delivery() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URLDEL, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLDEL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -401,7 +402,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void SliderGet() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -467,7 +468,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         } else {
             // Creating a json array request
-            JsonObjectRequest jsonKate = new JsonObjectRequest(URLKATE, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLKATE, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     // Dismissing progress dialog\
@@ -488,7 +489,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void statistik() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URLSTAT, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLSTAT, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try{
@@ -550,7 +551,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void daftarFlashDeal() {
         final LinearLayout layoutFlashDeal = (LinearLayout) findViewById(R.id.layout_flash_deal);
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URLFD, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLFD, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 String tanggal = "";
@@ -623,7 +624,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void konfigurasi() {
         String URL_CONF = Constant.URLAPI + "key=" + Constant.KEY + "&tag=konfigurasi&id=5";
-        JsonObjectRequest jsonKate = new JsonObjectRequest(URL_CONF, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URL_CONF, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -666,7 +667,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void UpdateFcmId(String token) {
         URL_TOKEN = Constant.URLAPI + "key=" + Constant.KEY + "&tag=gcm" + "&id=" + id + "&token=" + token;
 
-        JsonObjectRequest jsonLogin = new JsonObjectRequest(URL_TOKEN,
+        JsonObjectRequest jsonLogin = new JsonObjectRequest(Request.Method.GET, URL_TOKEN, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
