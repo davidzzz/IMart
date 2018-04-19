@@ -397,8 +397,6 @@ public class ProdukActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem help = menu.findItem(R.id.help);
-        help.setVisible(false);
         MenuItem item = menu.findItem(R.id.shop);
         MenuItemCompat.setActionView(item, R.layout.badge);
         RelativeLayout notifCount = (RelativeLayout) MenuItemCompat.getActionView(item);

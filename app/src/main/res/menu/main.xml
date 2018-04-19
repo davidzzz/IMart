@@ -13,10 +13,5 @@
         android:orderInCategory="100"
         app:showAsAction="always"
         android:title="SHOP"/>
-    <item
-        android:id="@+id/help"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="HELP"/>
 
 </menu>

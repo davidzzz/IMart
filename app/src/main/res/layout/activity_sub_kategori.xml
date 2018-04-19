@@ -16,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"
-        android:numColumns="2"
-        android:layout_margin="5dp" />
+        android:numColumns="2" />
 
     <LinearLayout
         android:layout_width="match_parent"

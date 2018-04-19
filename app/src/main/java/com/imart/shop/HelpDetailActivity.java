@@ -39,6 +39,7 @@ public class HelpDetailActivity extends AppCompatActivity implements OnMapReadyC
         id = getIntent().getIntExtra("id", 0);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setIcon(R.drawable.logo);
         getSupportActionBar().setTitle(id == 1 ? "ABOUT" : "HELP");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));

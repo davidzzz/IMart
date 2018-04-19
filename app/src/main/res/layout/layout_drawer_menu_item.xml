@@ -8,46 +8,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f4f5f5"
         android:orientation="vertical" >
 
         <View
             android:id="@+id/divider_top"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/main_color_grey_300" />
+            android:background="@color/green_drawer" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_selector"
             android:gravity="center_vertical"
-            android:minHeight="50dp"
+            android:minHeight="40dp"
             android:orientation="horizontal"
             android:paddingBottom="4dp"
             android:paddingTop="4dp" >
 
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="20dp"/>
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
                 android:paddingBottom="6dp"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
                 android:paddingTop="6dp"
                 android:textColor="#000"
-                android:textSize="18sp"/>
+                android:textSize="14sp"/>
 
         </LinearLayout>
 
@@ -55,7 +52,7 @@
             android:id="@+id/divider_bottom"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/main_color_grey_300" />
+            android:background="@color/green_drawer" />
     </LinearLayout>
 
 </com.imart.shop.view.MaterialRippleLayout>

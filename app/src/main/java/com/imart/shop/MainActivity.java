@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Log.e(TAG,"ini id firebase "+regId);
 
             Glide.with(this)
-                    .load(photo != null ? photo : R.drawable.user)
+                    .load(photo != null && !photo.equals("-") ? photo : R.drawable.user)
                     .transform(new RoundImage(MainActivity.this))
                     .into(imghd);
         } else {
@@ -980,10 +980,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.help) {
-            startActivity(new Intent(this, HelpActivity.class));
-            return true;
-        }
         if (id == R.id.search) {
             startActivity(new Intent(this, SearchActivity.class));
             return true;

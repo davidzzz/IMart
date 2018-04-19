@@ -10,7 +10,7 @@
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
-        android:src="@drawable/header_toolbar" />
+        android:background="#b1f01d" />
 
     <LinearLayout
         android:id="@+id/lytHeader"
@@ -33,8 +33,6 @@
                 android:layout_height="75dp"
                 android:layout_marginLeft="10dp"/>
 
-
-
         </LinearLayout>
 
             <LinearLayout
@@ -51,7 +49,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:text="nama Toko"
-                    android:textColor="@color/textColorPrimary"
                     android:textSize="20sp" />
 
                 <TextView
@@ -59,8 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fashion baju online"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="15sp"/>
+                    android:textSize="14sp"/>
             </LinearLayout>
 
     </LinearLayout>
