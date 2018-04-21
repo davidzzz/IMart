@@ -17,41 +17,33 @@
         android:padding="10dp"
         android:id="@+id/layout_poin">
 
-        <TextView
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="1dp"
-
-            android:layout_marginLeft="4dp"
-            android:background="@drawable/coins" />
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="1dp"
-                android:text="My Points"
+                android:text="Poin : "
                 android:textAlignment="inherit"
-                android:textSize="13sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/poin"
                 android:layout_width="match_parent"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:text="0"
                 android:textAlignment="inherit"
-                android:textSize="13sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
-
-
 
         <Button
             android:id="@+id/spin"
@@ -59,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.53"
             android:background="@drawable/add_selector"
+            android:visibility="gone"
             android:text="JACKPOT" />
     </LinearLayout>
 
@@ -70,14 +63,15 @@
         app:tabPaddingStart="-1dp"
         app:tabPaddingEnd="-1dp"
         app:tabIndicatorHeight="4dp"
-        app:tabIndicatorColor="@color/windowBackground"
-        android:background="@color/colorPrimary"/>
+        app:tabIndicatorColor="#62db02"
+        app:tabTextColor="#62db02"
+        app:tabSelectedTextColor="#62db02"
+        android:background="#ffffff"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="1">
-     </android.support.v4.view.ViewPager>
+        android:layout_weight="1" />
 
 </LinearLayout>

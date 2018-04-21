@@ -72,12 +72,6 @@ public class ProdukActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.Produk_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         arraylist = new ArrayList<ItemMenu>();
         total_notif = (TextView) findViewById(R.id.total_notif);

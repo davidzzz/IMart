@@ -43,12 +43,6 @@ public class HelpDetailActivity extends AppCompatActivity implements OnMapReadyC
         getSupportActionBar().setTitle(id == 1 ? "ABOUT" : "HELP");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         if (id == 1) {
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);

@@ -15,7 +15,7 @@ public class Constant {
     //public static String URLADMIN = "http://192.168.56.1/adminrestoran/";
     //public static String URLAPI = "http://192.168.56.1/adminrestoran/api/api.php?";
     public static String KEY = "12345";// USAHKAN PAKAI CAMPURAN KARAKTER
-    public static int COLOR = Color.RED;
+    public static int COLOR = Color.parseColor("#b1f01d");
 
     public static String TAG_SUB = "sub";
     public static String TAG_PROMO = "promo";

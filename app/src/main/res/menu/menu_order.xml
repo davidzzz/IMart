@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.imart.shop.TabActivity">
 
-    <item
+    <!--item
         android:id="@+id/filter"
         android:icon="@drawable/filter"
         android:orderInCategory="100"
@@ -20,6 +20,6 @@
                 android:id="@+id/status"
                 android:title="Sort by Status" />
         </menu>
-    </item>
+    </item-->
 
 </menu>

@@ -68,12 +68,6 @@ public class WishlistActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("WISHLIST");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         colorValue = getIntent().getIntExtra("color", 0);
         LinearLayout layout = (LinearLayout)findViewById(R.id.activity_wishlist);
         layout.setBackgroundColor(colorValue);

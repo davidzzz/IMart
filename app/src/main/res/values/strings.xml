@@ -11,7 +11,8 @@
     <string name="nav_item_notifications">Messages</string>
     <!--bagian quantity order -->
     <string name="Produk_title">Produk List</string>
-
+    <string name="facebook_app_id">433059547134101</string>
+    <string name="fb_login_protocol_scheme">fb433059547134101</string>
     <string name="delete_confirm">Kembali,tanpa data order??</string>
     <string name="delete_msg">Data Order hilang jika anda kembali!!</string>
     <string name="ya">Hapus</string>

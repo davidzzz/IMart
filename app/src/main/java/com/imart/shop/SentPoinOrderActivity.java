@@ -45,12 +45,6 @@ public class SentPoinOrderActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("SENT POIN AUTOMATIC");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         teksTransaksi = (EditText) findViewById(R.id.nomor_transaksi);
         btnSend = (Button) findViewById(R.id.btn_send);
         teksTotal = (TextView) findViewById(R.id.total_order);

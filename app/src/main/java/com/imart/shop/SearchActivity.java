@@ -71,12 +71,6 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         arraylist = new ArrayList<ItemMenu>();
         total_notif = (TextView) findViewById(R.id.total_notif);

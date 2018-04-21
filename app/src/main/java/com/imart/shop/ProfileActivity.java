@@ -63,12 +63,6 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("My Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         userid = user.get(SessionManager.KEY_PASSENGER_ID);

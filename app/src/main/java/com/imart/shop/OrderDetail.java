@@ -56,12 +56,6 @@ public class OrderDetail extends AppCompatActivity {
         getSupportActionBar().setTitle("Order Detail");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         lytbtn = (LinearLayout)findViewById(R.id.lytbtn);
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
@@ -110,7 +104,7 @@ public class OrderDetail extends AppCompatActivity {
                         alert.show();
                     }
                 });
-            } else if (item_order.getStatus().equals("PENDING")) {
+            /*} else if (item_order.getStatus().equals("PENDING")) {
                 btnSend.setText("CANCEL");
                 btnSend.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -132,7 +126,7 @@ public class OrderDetail extends AppCompatActivity {
 
                         alert.show();
                     }
-                });
+                });*/
             } else {
                 btnSend.setVisibility(View.GONE);
             }

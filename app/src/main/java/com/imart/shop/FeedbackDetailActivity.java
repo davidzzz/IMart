@@ -27,12 +27,6 @@ public class FeedbackDetailActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("RESERVASI");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         teksNama = (TextView) findViewById(R.id.nama);
         teksKomentar = (TextView) findViewById(R.id.komentar);
         teksWaktu = (TextView) findViewById(R.id.waktu);

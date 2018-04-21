@@ -50,6 +50,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -130,12 +131,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //getSupportActionBar().setTitle(getString(R.string.app_name));
         getSupportActionBar().setIcon(R.drawable.logo);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
 
         //jika os android di atas lolipop
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -189,21 +184,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         DrawerMenuItem test4 = new DrawerMenuItem(4, "Kategori", R.drawable.category);
         DrawerMenuItem test5 = new DrawerMenuItem(5, "History", R.drawable.history);
         DrawerMenuItem test6 = new DrawerMenuItem(6, "About", R.drawable.about_black);
+        DrawerMenuItem test7 = new DrawerMenuItem(7, isLogin() ? "Logout" : "Login", R.drawable.user);
         menuItems.add(test1);
         menuItems.add(test2);
         menuItems.add(test3);
         menuItems.add(test4);
         menuItems.add(test5);
         menuItems.add(test6);
-        if (isLogin() && !(akses.equals("2") && !Constant.IS_ADMIN)) {
-            DrawerMenuItem test7 = new DrawerMenuItem(7, "Feedback", R.drawable.feedback);
-            menuItems.add(test7);
-        }
-        DrawerMenuItem test8 = new DrawerMenuItem(8, isLogin() ? "Logout" : "Login", R.drawable.user);
-        menuItems.add(test8);
+        menuItems.add(test7);
         if (!isLogin()) {
-            DrawerMenuItem test9 = new DrawerMenuItem(8, "Daftar", R.drawable.user);
-            menuItems.add(test9);
+            DrawerMenuItem test8 = new DrawerMenuItem(8, "Daftar", R.drawable.user);
+            menuItems.add(test8);
         }
         mDrawerMenuAdapter = new DrawerMenuItemAdapter(MainActivity.this, R.layout.layout_drawer_menu_item, menuItems);
         mLvDrawerMenu.setAdapter(mDrawerMenuAdapter);
@@ -794,13 +785,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case 7:
                 if (isLogin()) {
-                    if (!(akses.equals("2") && !Constant.IS_ADMIN)) {
-                        Intent i = new Intent(this, WishlistActivity.class);
-                        i.putExtra("color", colorValue);
-                        startActivity(i);
-                    } else {
-                        Logout();
-                    }
+                    Logout();
                 } else {
                     Intent i = new Intent(this, LoginActivity.class);
                     startActivity(i);
@@ -809,9 +794,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 overridePendingTransition(R.anim.open_next, R.anim.close_next);
                 break;
             case 8:
-                if (isLogin() && !(akses.equals("2") && !Constant.IS_ADMIN)) {
-                    Logout();
-                } else {
+                if (!isLogin()) {
                     Intent i = new Intent(this, RegisterActivity.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.open_next, R.anim.close_next);

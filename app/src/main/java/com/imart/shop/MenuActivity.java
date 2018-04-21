@@ -60,12 +60,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setTitle(getString(R.string.setting_title));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         imgProfile = (ImageView) findViewById(R.id.imgProfile);
         txtnama = (TextView) findViewById(R.id.txtnama);
         txtkode = (TextView) findViewById(R.id.userid);

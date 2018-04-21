@@ -72,7 +72,8 @@ public class OrderAdapter extends BaseAdapter {
         if (item.getStatus().equals("PROCESSED")) {
             btnCancel.setText("Accept Delivery");
         } else {
-            btnCancel.setText("CANCEL");
+            //btnCancel.setText("CANCEL");
+            btnCancel.setVisibility(View.GONE);
         }
         status.setText(item.getStatus());
         txtTotal.setText("Rp " + formatduit.format(item.getTotal()));

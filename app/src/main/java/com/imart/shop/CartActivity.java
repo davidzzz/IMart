@@ -127,12 +127,6 @@ public class CartActivity extends AppCompatActivity
         getSupportActionBar().setTitle(R.string.checkout);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         gps = new GPSTracker(this);
 
         lytOrder =(LinearLayout)findViewById(R.id.lytOrder);
@@ -215,7 +209,7 @@ public class CartActivity extends AppCompatActivity
     }
 
     public void daftarKategori() {
-        String URLKATE = Constant.URLAPI + "key=" + Constant.KEY + "&tag=" + Constant.TAG_SUB;
+        String URLKATE = Constant.URLAPI + "key=" + Constant.KEY + "&tag=antar";
         listAntar = new ArrayList<>();
         JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLKATE, null, new Response.Listener<JSONObject>() {
             @Override
@@ -309,8 +303,8 @@ public class CartActivity extends AppCompatActivity
             teksAlamat.setText("Dikirim ke " + alamat);
         }
         teksRekening.setText("Silahkan melakukan pembayaran ke nomor rekening ini\n" + norek);
-        teksTotal.setText("Rp " + totalorder);
-        teksGrandTotal.setText("Rp " + txtsubtotl.getText().toString());
+        teksTotal.setText("Rp " + formatduit.format(totalorder));
+        teksGrandTotal.setText("Rp " + formatduit.format(txtsubtotl.getText().toString()));
         teksTotalItem.setText(totalItem + "");
         Button cancel = (Button) dialog.findViewById(R.id.cancel);
         Button ok = (Button) dialog.findViewById(R.id.ok);

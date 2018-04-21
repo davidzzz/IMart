@@ -20,12 +20,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.FacebookException;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.ConnectionResult;
 
 import com.google.android.gms.common.SignInButton;
 import com.imart.shop.app.myapp;
 import com.imart.shop.util.Constant;
+import com.imart.shop.util.FacebookSign;
 import com.imart.shop.util.GoogleSign;
 import com.imart.shop.util.SessionManager;
 import com.imart.shop.util.Utils;
@@ -36,12 +39,14 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoLoginGoogleCallback, OnClickListener {
+public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoLoginGoogleCallback, FacebookSign.InfoLoginFaceCallback, OnClickListener {
     Button txtRegis, txtForgot;
     private Button btnSign;
     SignInButton btnGl;
+    LoginButton btnFace;
     EditText username, pass;
     GoogleSign googleSign; // Google sign-in
+    FacebookSign facebookSign;
     String strEmail, strAlamat, strPass, strMessage, strName, strPoin, strTelp, strPassengerId,strAkses,strSex,latitude,long_latitude;
     SessionManager session;
     String email,fcmid;
@@ -50,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        googleSign = new GoogleSign(this, this);
+        facebookSign = new FacebookSign(this, this);
         setContentView(R.layout.login);
         session = new SessionManager(getApplicationContext());
         //button
@@ -62,14 +69,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
 
         txtForgot.setOnClickListener(this);
         txtRegis.setOnClickListener(this);
-        // FragmentActivity and interface listener
-        googleSign = new GoogleSign(this, this);
 
         btnGl = (SignInButton) findViewById(R.id.btnGoogle);
+        btnFace = (LoginButton) findViewById(R.id.btnFace);
         btnSign = (Button) findViewById(R.id.btnSign);
 
         // bikin button di klik
         btnGl.setOnClickListener(this);
+        btnFace.setOnClickListener(this);
         btnSign.setOnClickListener(this);
         for (int i = 0; i < btnGl.getChildCount(); i++) {
             View v = btnGl.getChildAt(i);
@@ -87,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         googleSign.resultGoogleLogin(requestCode, resultCode, data); // result
+        facebookSign.resultFaceLogin(requestCode, resultCode, data); // result
     }
 
     @Override
@@ -98,6 +106,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
                 if (Utils.isConnectedToInternet(this)) {
                     // ketika konek internet ekseskusi
                     googleSign.signIn();
+                } else {
+                    // ini ketika tidak ada koneksi
+                    Toast.makeText(this, "tidak ada koneksi", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+            case R.id.btnFace:
+                // button di google di clik eksekusi ketika ada internet
+                if (Utils.isConnectedToInternet(this)) {
+                    // ketika konek internet ekseskusi
+                    facebookSign.signInWithFaceButton(btnFace);
                 } else {
                     // ini ketika tidak ada koneksi
                     Toast.makeText(this, "tidak ada koneksi", Toast.LENGTH_SHORT).show();
@@ -271,5 +290,46 @@ public class LoginActivity extends AppCompatActivity implements GoogleSign.InfoL
     @Override
     public void loginFailed() {
         Toast.makeText(this, "Gagal Login..", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void getInfoFace(String id, String name, String email, String foto) {
+        System.setProperty("http.keepAlive", "false");
+        if (email != null &&  name != null){
+            strName = name;
+            strEmail = email;
+            ProfileImg = foto;
+            final ProgressDialog loading = ProgressDialog.show(this, "Loading..", "Tunggu ya..", false, false);
+            String URL_LOGIN = Constant.URLAPI + "key=" + Constant.KEY + "&tag=Login_face" + "&email=" + strEmail + "&nama=" + strName.replace(" ", "%20");
+            JsonObjectRequest jsonLogin = new JsonObjectRequest(Request.Method.GET, URL_LOGIN, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            // Dismissing progress dialog
+                            parseJsonLogin(response);
+                            loading.dismiss();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    loading.dismiss();
+                }
+            });
+            jsonLogin.setRetryPolicy(new DefaultRetryPolicy(5000, 20, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            myapp.getInstance().addToRequestQueue(jsonLogin);
+        } else {
+            cancelLoginFace();
+        }
+    }
+
+    @Override
+    public void cancelLoginFace() {
+        Toast.makeText(this, "Batal Login", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void errorLoginFace(FacebookException e) {
+        Log.e("LOG", "Connection Failed API " + e.getMessage());
+        Toast.makeText(this, "Gagal Login", Toast.LENGTH_SHORT).show();
     }
 }

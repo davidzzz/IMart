@@ -47,12 +47,6 @@ public class HelpActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("HELP");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         listHelp = (ListView) findViewById(R.id.listHelp);
         adapter = new Adapter(list);
         listHelp.setOnItemClickListener(new AdapterView.OnItemClickListener() {

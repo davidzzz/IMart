@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -35,10 +36,13 @@ public class FacebookSign {
         this.mActivity = mActivity;
         this.mFaceCallback = mFaceCallback;
         mCallbackManager = CallbackManager.Factory.create();
+        if (isLoggedIn()) {
+            LoginManager.getInstance().logOut();
+        }
     }
 
     public void signInWithFaceButton(LoginButton loginButton){
-        List<String> permissionNeeds= Arrays.asList("email", "user_about_me");
+        List<String> permissionNeeds= Arrays.asList("email", "public_profile");
         loginButton.setReadPermissions(permissionNeeds);
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -86,7 +90,7 @@ public class FacebookSign {
             @Override
             public void onError(FacebookException error) {
                 if (mFaceCallback != null){
-                    mFaceCallback.erroLoginFace(error);
+                    mFaceCallback.errorLoginFace(error);
                 }else {
                     throw new IllegalArgumentException("interface InfoLoginFaceCallback is null");
                 }
@@ -95,9 +99,7 @@ public class FacebookSign {
     }
 
     public void signIn(){
-
-        List<String> permissionNeeds= Arrays.asList("email", "user_about_me");
-
+        List<String> permissionNeeds= Arrays.asList("email", "public_profile");
         LoginManager.getInstance().logInWithReadPermissions(
                 mActivity,
                 permissionNeeds);
@@ -147,7 +149,7 @@ public class FacebookSign {
                     @Override
                     public void onError(FacebookException e) {
                         if (mFaceCallback != null){
-                            mFaceCallback.erroLoginFace(e);
+                            mFaceCallback.errorLoginFace(e);
                         }else {
                             throw new IllegalArgumentException("interface InfoLoginFaceCallback is null");
                         }
@@ -155,14 +157,19 @@ public class FacebookSign {
                 });
     }
 
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
+    }
+
     public void resultFaceLogin(int requestCode, int resultCode, Intent data){
         mCallbackManager.onActivityResult(requestCode,resultCode,data);
     }
 
     public interface InfoLoginFaceCallback {
-        void getInfoFace(String id, String nome, String email, String foto);
+        void getInfoFace(String id, String name, String email, String foto);
         void cancelLoginFace();
-        void erroLoginFace(FacebookException e);
+        void errorLoginFace(FacebookException e);
     }
 
 }

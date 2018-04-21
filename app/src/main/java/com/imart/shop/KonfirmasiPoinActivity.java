@@ -52,12 +52,6 @@ public class KonfirmasiPoinActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("KONFIRMASI");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         teksNomorResi = (TextView) findViewById(R.id.nomor_resi);
         teksTotalOrder = (TextView) findViewById(R.id.total_order);
         teksPoin = (TextView) findViewById(R.id.poin);

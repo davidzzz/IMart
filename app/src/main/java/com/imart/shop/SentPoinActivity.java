@@ -34,12 +34,6 @@ public class SentPoinActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("SENT POIN MANUAL");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         layoutScan = (LinearLayout) findViewById(R.id.layout_scan);
         layoutManualScan = (LinearLayout) findViewById(R.id.layout_manual_scan);
         layoutManualScan.setVisibility(View.GONE);

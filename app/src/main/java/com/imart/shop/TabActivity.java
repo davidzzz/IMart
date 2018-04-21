@@ -46,15 +46,10 @@ public class TabActivity extends AppCompatActivity {
         tipe = getIntent().getStringExtra("tipe");
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setIcon(R.drawable.logo);
         getSupportActionBar().setTitle(tipe.equals("history") ? "ORDER" : "VOUCHER");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         LinearLayout layoutPoin = (LinearLayout) findViewById(R.id.layout_poin);
         SessionManager session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
@@ -67,19 +62,19 @@ public class TabActivity extends AppCompatActivity {
             if (akses.equals("2")) {
                 orderList = OrderList.newInstance("order", isFlashDeal);
                 historyList = OrderList.newInstance("history", isFlashDeal);
-                adapter.setFragment(orderList, "ORDER");
-                adapter.setFragment(historyList, "HISTORY");
+                adapter.setFragment(orderList, "Order");
+                adapter.setFragment(historyList, "History");
             } else {
                 fragOrder = FragOrderProses.newInstance(isFlashDeal);
                 fragHistory = FragmentHistory.newInstance(isFlashDeal);
-                adapter.setFragment(fragOrder, "ORDER");
-                adapter.setFragment(fragHistory, "HISTORY");
+                adapter.setFragment(fragOrder, "Order");
+                adapter.setFragment(fragHistory, "History");
             }
         } else if (tipe.equals("voucher")) {
-            adapter.setFragment(new VoucherList(), "VOUCHER");
+            adapter.setFragment(new VoucherList(), "Voucher");
             if (akses.equals("2")) {
                 layoutPoin.setVisibility(View.GONE);
-                adapter.setFragment(new OrderVoucher(), "ORDER VOUCHER");
+                adapter.setFragment(new OrderVoucher(), "Order Voucher");
             } else {
                 layoutPoin.setVisibility(View.VISIBLE);
                 TextView poin = (TextView) findViewById(R.id.poin);
@@ -91,7 +86,7 @@ public class TabActivity extends AppCompatActivity {
                         startActivity(new Intent(TabActivity.this, SpinActivity.class));
                     }
                 });
-                adapter.setFragment(new MyVoucher(), "MY VOUCHER");
+                adapter.setFragment(new MyVoucher(), "My Voucher");
             }
         }
         pager = (ViewPager)findViewById(R.id.pager);
@@ -139,7 +134,7 @@ public class TabActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
-        } else if (id == R.id.nama || id == R.id.tanggal || id == R.id.status) {
+        }/* else if (id == R.id.nama || id == R.id.tanggal || id == R.id.status) {
             Comparator<ItemOrder> c;
             if (id == R.id.nama) {
                 c = new CompareNama();
@@ -163,7 +158,7 @@ public class TabActivity extends AppCompatActivity {
                 Collections.sort(list, c);
                 fragHistory.getAdapter().notifyDataSetChanged();
             }
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 

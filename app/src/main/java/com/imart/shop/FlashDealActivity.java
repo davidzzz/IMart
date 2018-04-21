@@ -62,12 +62,6 @@ public class FlashDealActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getIntent().getStringExtra("nama"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         teksNama = (TextView) findViewById(R.id.nama);
         teksTanggal = (TextView) findViewById(R.id.tanggal);
         teksHarga = (TextView) findViewById(R.id.harga);

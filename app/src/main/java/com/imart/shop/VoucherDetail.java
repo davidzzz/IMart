@@ -40,12 +40,6 @@ public class VoucherDetail extends AppCompatActivity {
         getSupportActionBar().setTitle("Voucher");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(Constant.COLOR);
-        } else {
-            window.setTitleColor(Constant.COLOR);
-        }
         id = getIntent().getIntExtra("id", 0);
         URL = Constant.URLADMIN + "api/voucher.php?key=" + Constant.KEY + "&tag=listdetail&id=" + id;
         viewVoucher();

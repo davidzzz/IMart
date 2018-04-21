@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/material_red_500</color>
-    <color name="colorPrimaryDark">@color/material_red_600</color>
+    <color name="colorPrimary">#b1f01d</color>
+    <color name="colorPrimary2">@color/material_red_500</color>
+    <color name="colorPrimaryDark">#62db02</color>
     <color name="colorPrimaryDark2">@color/material_red_700</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorPrimaryBlack">#000000</color>
