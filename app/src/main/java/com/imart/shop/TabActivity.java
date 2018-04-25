@@ -46,8 +46,8 @@ public class TabActivity extends AppCompatActivity {
         tipe = getIntent().getStringExtra("tipe");
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setIcon(R.drawable.logo);
-        getSupportActionBar().setTitle(tipe.equals("history") ? "ORDER" : "VOUCHER");
+        getSupportActionBar().setIcon(R.drawable.logo_imart);
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         LinearLayout layoutPoin = (LinearLayout) findViewById(R.id.layout_poin);

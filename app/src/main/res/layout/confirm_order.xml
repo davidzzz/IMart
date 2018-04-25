@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="400dp"
+    android:layout_width="320dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
@@ -62,7 +62,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:gravity="end"
             android:id="@+id/total"/>
     </LinearLayout>
@@ -83,7 +83,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:id="@+id/tax"
             android:gravity="end"
             android:visibility="gone"/>
@@ -107,7 +107,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:id="@+id/service"
             android:gravity="end"
             android:visibility="gone"/>
@@ -131,7 +131,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:id="@+id/ongkir"
             android:gravity="end"
             android:visibility="gone"/>
@@ -155,7 +155,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:id="@+id/grandtotal"
             android:visibility="gone"
             android:gravity="end"
@@ -181,7 +181,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:gravity="end"
             android:id="@+id/totalitem"/>
     </LinearLayout>

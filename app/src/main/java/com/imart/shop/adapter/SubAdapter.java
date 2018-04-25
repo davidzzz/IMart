@@ -10,6 +10,7 @@ import com.imart.shop.SubKategoriActivity;
 import com.imart.shop.model.ItemSub;
 import com.imart.shop.util.Constant;
 import com.imart.shop.view.RoundedCornerTransformation;
+import com.imart.shop.view.SquareImage;
 
 import android.app.Activity;
 import android.content.Context;
@@ -55,7 +56,7 @@ public class SubAdapter extends BaseAdapter {
         if (convertView == null)
             convertView = inflater.inflate(R.layout.sub_item, null);
 
-        ImageView thumbNail = (ImageView) convertView.findViewById(R.id.imgThumb);
+        SquareImage thumbNail = (SquareImage) convertView.findViewById(R.id.imgThumb);
         TextView name = (TextView) convertView.findViewById(R.id.txtText);
         ItemSub itemlatest = itemList.get(position);
         if (activity.getClass().getSimpleName().equals(SubKategoriActivity.class.getSimpleName())) {
@@ -65,9 +66,10 @@ public class SubAdapter extends BaseAdapter {
         layout.setBackgroundColor(colorValue);
         Glide.with(activity)
                 .load(Constant.URLADMIN + itemlatest.getImage())
-                .transform(new RoundedCornerTransformation(activity))
                 .placeholder(R.drawable.loading)
-                .centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(thumbNail);
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(thumbNail);
 
         return convertView;
     }

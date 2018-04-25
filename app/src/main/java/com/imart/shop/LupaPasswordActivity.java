@@ -57,7 +57,7 @@ public class LupaPasswordActivity extends AppCompatActivity {
         teksPass = (EditText) findViewById(R.id.pass);
         teksKode.setVisibility(View.GONE);
         teksPass.setVisibility(View.GONE);
-        Button send = (Button) findViewById(R.id.send);
+        Button send = (Button) findViewById(R.id.btnSend);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

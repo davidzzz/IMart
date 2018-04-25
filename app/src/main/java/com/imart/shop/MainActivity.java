@@ -529,6 +529,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // notify data changes to list adapater
             gridView.setAdapter(adapter);
             gridView.setExpanded(true);
+            gridView.setHorizontalSpacing(0);
+            gridView.setVerticalSpacing(0);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -945,10 +947,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(MainActivity.this, CartActivity.class);
-                    i.putExtra("poin", Constant.poin);
-                    i.putParcelableArrayListExtra("cartList", Constant.cartList);
-                    startActivity(i);
+                    if (Constant.cartList.size() > 0) {
+                        Intent i = new Intent(MainActivity.this, CartActivity.class);
+                        i.putExtra("poin", Constant.poin);
+                        i.putParcelableArrayListExtra("cartList", Constant.cartList);
+                        startActivity(i);
+                    }
                 }
             });
         } else {

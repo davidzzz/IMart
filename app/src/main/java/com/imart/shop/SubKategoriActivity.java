@@ -134,10 +134,12 @@ public class SubKategoriActivity extends AppCompatActivity {
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(SubKategoriActivity.this, CartActivity.class);
-                    i.putExtra("poin", Constant.poin);
-                    i.putParcelableArrayListExtra("cartList", Constant.cartList);
-                    startActivity(i);
+                    if (Constant.cartList.size() > 0) {
+                        Intent i = new Intent(SubKategoriActivity.this, CartActivity.class);
+                        i.putExtra("poin", Constant.poin);
+                        i.putParcelableArrayListExtra("cartList", Constant.cartList);
+                        startActivity(i);
+                    }
                 }
             });
         } else {

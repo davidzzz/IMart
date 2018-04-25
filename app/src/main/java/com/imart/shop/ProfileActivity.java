@@ -114,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             try {
                 List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-                if (addresses != null) {
+                if (addresses != null && addresses.size() > 0) {
                     Address returnedAddress = addresses.get(0);
                     StringBuilder strReturnedAddress = new StringBuilder();
                     for (int i = 0; i < returnedAddress.getMaxAddressLineIndex(); i++) {

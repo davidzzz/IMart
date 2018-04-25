@@ -206,6 +206,7 @@ public class CartActivity extends AppCompatActivity
         konfigurasi();
         lokasiToko();
         ambilData();
+        rekening();
     }
 
     public void daftarKategori() {
@@ -239,7 +240,7 @@ public class CartActivity extends AppCompatActivity
     private void setSpin() {
         daftarKategori();
         adapterAntar = new ArrayAdapter<>(CartActivity.this, android.R.layout.simple_spinner_dropdown_item, listAntar);
-        jam.setAdapter(adapter);
+        jam.setAdapter(adapterAntar);
         jam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -303,8 +304,8 @@ public class CartActivity extends AppCompatActivity
             teksAlamat.setText("Dikirim ke " + alamat);
         }
         teksRekening.setText("Silahkan melakukan pembayaran ke nomor rekening ini\n" + norek);
-        teksTotal.setText("Rp " + formatduit.format(totalorder));
-        teksGrandTotal.setText("Rp " + formatduit.format(txtsubtotl.getText().toString()));
+        teksTotal.setText("Rp " + formatduit.format(totalBarang));
+        teksGrandTotal.setText("Rp " + formatduit.format(subTotal));
         teksTotalItem.setText(totalItem + "");
         Button cancel = (Button) dialog.findViewById(R.id.cancel);
         Button ok = (Button) dialog.findViewById(R.id.ok);
@@ -544,7 +545,7 @@ public class CartActivity extends AppCompatActivity
 
     public void drawRoute(){
         RouteDraw.getInstance(this,CartActivity.this).setFromLatLong(latitude, longitude)
-                .setToLatLong(latToko, lngToko).setGmapAndKey("AIzaSyAKJSEmNQ9OtgKIzifjdNQBq50xb4cj_H0",mMap)
+                .setToLatLong(latToko, lngToko).setGmapAndKey("AIzaSyDjONYWReVd9irv6RNGKoZxfAtoQRUw55k",mMap)
                 .run();
         if (mMap != null) {
             mMap.clear();
@@ -574,7 +575,6 @@ public class CartActivity extends AppCompatActivity
             subTotal = ongkir + totalBarang;
             txtsubtotl.setText(formatduit.format(subTotal)+"");
         } catch (JSONException e) {
-
         }
     }
 

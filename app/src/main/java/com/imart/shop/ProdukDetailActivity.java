@@ -95,6 +95,7 @@ public class ProdukDetailActivity extends AppCompatActivity {
                     qty = 0;
                     teksQty.setText("0");
                     total.setText("Total: Rp. 0");
+                    cart = null;
                 } else if (qty > 1) {
                     qty--;
                     int SubTotal = qty * harga;

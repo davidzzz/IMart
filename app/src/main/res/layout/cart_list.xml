@@ -116,7 +116,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="#fff"
                     android:orientation="vertical"
                     android:id="@+id/layout_antar"
                     android:padding="10dp">
@@ -127,6 +126,7 @@
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="#000000"
                         android:id="@+id/jam"/>
                 </LinearLayout>
 
@@ -278,7 +278,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:paddingLeft="10dp"
-                        android:text="Total"
+                        android:text="Sub Total"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -309,7 +309,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:paddingLeft="10dp"
-                        android:text="Sub Total"
+                        android:text="Total"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 

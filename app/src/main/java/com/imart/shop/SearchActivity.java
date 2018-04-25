@@ -1,5 +1,6 @@
 package com.imart.shop;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -46,6 +47,8 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     Toolbar mToolbar;
@@ -54,14 +57,16 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     private List<ItemMenu> arraylist;
     private ArrayList<Cart> cartList;
     private LinearLayout estimasi;
-    String URL, URL_MENU, id;
+    String URL, URL_MENU;
     private static final int PRODUK_DETAIL = 100;
     private int poin = 0, total_item = 0, totalBarang = 0, currentPosition;
-
+    Long time = 0L;
     TextView txtTotal, total_notif, countCart;
     DecimalFormat formatduit = new DecimalFormat();
     ProgressBar loading;
     boolean onActivityResult = false;
+    Timer timer = new Timer();
+    boolean reset = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +91,6 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
                 startActivity(i);
             }
         });
-        id = getIntent().getStringExtra("id");
         listview = (GridView) findViewById(R.id.list_view);
         adapter = new AdapterSinz(this, arraylist);
         listview.setAdapter(adapter);
@@ -390,8 +394,11 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         getMenuInflater().inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.search);
         MenuItemCompat.setActionView(item, R.layout.search);
+        SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
         searchView.setIconified(false);
+        searchView.setBackgroundResource(R.drawable.edittext_top_bg);
         searchView.setOnQueryTextListener(this);
         MenuItem shop = menu.findItem(R.id.shop);
         MenuItemCompat.setActionView(shop, R.layout.badge);
@@ -426,14 +433,37 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        return false;
+        URL_MENU = Constant.URLAPI + "key=" + Constant.KEY + "&tag=search&search=" + query;
+        getData();
+        return true;
     }
 
     @Override
     public boolean onQueryTextChange(String text) {
-        URL_MENU = Constant.URLAPI + "key=" + Constant.KEY + "&tag=search&id=" + id + "&search=" + text;
-        getData();
-        return false;
+        URL_MENU = Constant.URLAPI + "key=" + Constant.KEY + "&tag=search&search=" + text;
+        Long tsLong = System.currentTimeMillis()/1000;
+        if (time != 0L && tsLong - time >= 1) {
+            reset = false;
+            time = tsLong;
+        } else {
+            reset = true;
+        }
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (reset) {
+                            getData();
+                            time = 0L;
+                            reset = true;
+                        }
+                    }
+                },
+                1000
+        );
+        return true;
     }
 
     @Override
@@ -452,6 +482,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
             arraylist.clear();
             listview.setAdapter(null);
         }
+        timer.cancel();
         super.onDestroy();
     }
 

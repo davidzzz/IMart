@@ -187,27 +187,29 @@ public class ProdukActivity extends AppCompatActivity {
             case PRODUK_DETAIL:
                 if (data != null) {
                     Cart c = data.getParcelableExtra("cart");
-                    Cart cartLama = adapter.findCart(c.getIdMenu());
-                    if (cartLama != null) {
-                        cartList.remove(cartLama);
-                        totalBarang -= (cartLama.getQuantity() * cartLama.getHarga());
-                        total_item -= cartLama.getQuantity();
-                        poin -= (cartLama.getQuantity() * cartLama.getPoin());
-                    }
-                    cartList.add(c);
-                    ItemMenu item = (ItemMenu) adapter.getItem(currentPosition);
-                    item.setQuantity(c.getQuantity());
-                    adapter.notifyDataSetChanged();
-                    totalBarang += (c.getQuantity() * c.getHarga());
-                    total_item += c.getQuantity();
-                    poin += (c.getQuantity() * c.getPoin());
-                    if (totalBarang == 0) {
-                        estimasi.setVisibility(View.GONE);
-                    } else {
-                        estimasi.setVisibility(View.VISIBLE);
-                        txtTotal.setText("Rp " + formatduit.format(totalBarang));
-                        total_notif.setText(total_item + "");
-                        countCart.setText(total_item + "");
+                    if (c != null) {
+                        Cart cartLama = adapter.findCart(c.getIdMenu());
+                        if (cartLama != null) {
+                            cartList.remove(cartLama);
+                            totalBarang -= (cartLama.getQuantity() * cartLama.getHarga());
+                            total_item -= cartLama.getQuantity();
+                            poin -= (cartLama.getQuantity() * cartLama.getPoin());
+                        }
+                        cartList.add(c);
+                        ItemMenu item = (ItemMenu) adapter.getItem(currentPosition);
+                        item.setQuantity(c.getQuantity());
+                        adapter.notifyDataSetChanged();
+                        totalBarang += (c.getQuantity() * c.getHarga());
+                        total_item += c.getQuantity();
+                        poin += (c.getQuantity() * c.getPoin());
+                        if (totalBarang == 0) {
+                            estimasi.setVisibility(View.GONE);
+                        } else {
+                            estimasi.setVisibility(View.VISIBLE);
+                            txtTotal.setText("Rp " + formatduit.format(totalBarang));
+                            total_notif.setText(total_item + "");
+                            countCart.setText(total_item + "");
+                        }
                     }
                 }
                 onActivityResult = true;
@@ -400,10 +402,12 @@ public class ProdukActivity extends AppCompatActivity {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ProdukActivity.this, CartActivity.class);
-                i.putExtra("poin", poin);
-                i.putParcelableArrayListExtra("cartList", cartList);
-                startActivity(i);
+                if (cartList.size() > 0) {
+                    Intent i = new Intent(ProdukActivity.this, CartActivity.class);
+                    i.putExtra("poin", poin);
+                    i.putParcelableArrayListExtra("cartList", cartList);
+                    startActivity(i);
+                }
             }
         });
         return true;
