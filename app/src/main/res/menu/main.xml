@@ -1,16 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.imart.shop.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/search"
         android:title="Search"
+        android:hint="Cari barang"
         app:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_search"/>
+        android:icon="@android:drawable/ic_menu_search"
+        android:actionViewClass="android.widget.SearchView"/>
     <item
         android:id="@+id/shop"
         android:icon="@drawable/shop"
-        android:orderInCategory="100"
         app:showAsAction="always"
         android:title="SHOP"/>
 

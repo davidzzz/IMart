@@ -1,9 +1,12 @@
 package com.imart.shop;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +19,7 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -35,17 +39,22 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class SubKategoriActivity extends AppCompatActivity {
-    GridView gridView;
-    ArrayList<ItemSub> itemList;
+public class SubKategoriActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     SubAdapter adapter;
-    String URLKATE, akses, id;
+    String akses, id;
     int colorValue;
     TextView countCart;
     SessionManager session;
     ProgressBar loading;
     HashMap<String, String> user;
+    Timer timer = new Timer();
+    boolean reset = true;
+    Long time = 0L;
+    SubKategoriFragment kategoriFragment = new SubKategoriFragment();
+    SearchFragment searchFragment = new SearchFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,75 +68,39 @@ public class SubKategoriActivity extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         akses = user.get(SessionManager.KEY_AKSES);
-        gridView = (GridView) findViewById(R.id.gridView);
         colorValue = getIntent().getIntExtra("color", 0);
         id = getIntent().getStringExtra("id");
-        loading = (ProgressBar) findViewById(R.id.prgLoading);
         LinearLayout layout = (LinearLayout)findViewById(R.id.activity_kategori);
         layout.setBackgroundColor(colorValue);
-        itemList = new ArrayList<>();
-        adapter = new SubAdapter(this, itemList, colorValue);
-        gridView.setAdapter(adapter);
-        URLKATE = Constant.URLAPI + "key=" + Constant.KEY + "&tag=subkat&id=" + id;
-        daftarKategori();
-        SessionManager session = new SessionManager(getApplicationContext());
-        HashMap<String, String> user = session.getUserDetails();
-        String akses = user.get(SessionManager.KEY_AKSES);
-        if (akses.equals("1")) {
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                    ItemSub item = (ItemSub) parent.getItemAtPosition(position);
-                    Intent intentlist = new Intent(SubKategoriActivity.this, ProdukActivity.class);
-                    intentlist.putExtra("id", item.getId());
-                    startActivity(intentlist);
-                }
-            });
-        }
+        Bundle bundle = new Bundle();
+        bundle.putInt("color", colorValue);
+        bundle.putString("id", id);
+        kategoriFragment.setArguments(bundle);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.pager, kategoriFragment);
+        transaction.commit();
     }
 
-    private void daftarKategori() {
-        JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLKATE, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                itemList.clear();
-                parseJsonKategory(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                loading.setVisibility(View.GONE);
-            }
-        });
-        jsonKate.setRetryPolicy(new DefaultRetryPolicy(5000, 20, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        myapp.getInstance().addToRequestQueue(jsonKate);
-    }
-
-    private void parseJsonKategory(JSONObject response) {
-        try {
-            JSONArray feedArray = response.getJSONArray("data");
-            for (int i = 0; i < feedArray.length(); i++) {
-                JSONObject feedObj = (JSONObject) feedArray.get(i);
-                ItemSub item = new ItemSub();
-                item.setId(feedObj.getString("id"));
-                item.setName(feedObj.getString("nama"));
-                item.setImage(feedObj.getString("gambar"));
-                itemList.add(item);
-            }
-        } catch (JSONException e) {
-        }
-        loading.setVisibility(View.GONE);
-        adapter.notifyDataSetChanged();
+    public TextView getCountCart(){
+        return countCart;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem item = menu.findItem(R.id.shop);
+        MenuItem item = menu.findItem(R.id.search);
+        MenuItemCompat.setActionView(item, R.layout.search);
+        SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+        searchView.setIconified(false);
+        searchView.setBackgroundResource(R.drawable.edittext_top_bg);
+        searchView.setOnQueryTextListener(this);
+        MenuItem shop = menu.findItem(R.id.shop);
         if (akses.equals("1")) {
-            MenuItemCompat.setActionView(item, R.layout.badge);
-            RelativeLayout notifCount = (RelativeLayout) MenuItemCompat.getActionView(item);
+            MenuItemCompat.setActionView(shop, R.layout.badge);
+            RelativeLayout notifCount = (RelativeLayout) MenuItemCompat.getActionView(shop);
             RelativeLayout layout = (RelativeLayout) notifCount.findViewById(R.id.badge_layout);
             countCart = (TextView) notifCount.findViewById(R.id.badge);
             countCart.setText(Constant.jumlah + "");
@@ -144,7 +117,50 @@ public class SubKategoriActivity extends AppCompatActivity {
             });
         } else {
             item.setVisible(false);
+            shop.setVisible(false);
         }
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        searchFragment.getData(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(final String text) {
+        if (text.length() > 0) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.pager, searchFragment);
+            transaction.commit();
+        } else if (text.length() == 0) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.pager, kategoriFragment);
+            transaction.commit();
+        }
+        Long tsLong = System.currentTimeMillis()/1000;
+        if (time != 0L && tsLong - time < 1) {
+            reset = false;
+            time = tsLong;
+        } else {
+            reset = true;
+        }
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (reset) {
+                            searchFragment.getData(text);
+                            time = 0L;
+                            reset = true;
+                        }
+                    }
+                },
+                1000
+        );
         return true;
     }
 
@@ -156,9 +172,24 @@ public class SubKategoriActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             // app icon in action bar clicked; go home
-            finish();
+            cekData();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        cekData();
+    }
+
+    private void cekData() {
+        if (searchFragment.cartList.size() > 0) {
+            Constant.cartList = searchFragment.cartList;
+            Constant.poin = searchFragment.poin;
+            Constant.jumlah = searchFragment.total_item;
+        }
+        finish();
+        overridePendingTransition(R.anim.open_main, R.anim.close_next);
     }
 
     @Override

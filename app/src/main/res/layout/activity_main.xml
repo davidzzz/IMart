@@ -14,9 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/layout_kategori"
-            layout="@layout/kategori" />
+        <FrameLayout
+            android:id="@+id/pager"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
 
         <include
             android:id="@+id/lv_drawer_menu"
