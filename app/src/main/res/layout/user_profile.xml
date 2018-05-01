@@ -15,160 +15,178 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
         <!--disini title menu -->
-        <LinearLayout
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!--nama disini-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+            android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textColor="@color/main_color_grey_700"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edtnama"
+            <FrameLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:inputType="text"
-                    android:textSize="14sp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Please insert your name" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <!--nama disini-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-            </LinearLayout>
-            <!--email disini-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                        <TextView
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:textColor="@color/main_color_grey_700"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textColor="@color/main_color_grey_700"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                        <EditText
+                            android:id="@+id/edtnama"
+                            android:layout_width="match_parent"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:hint="Please insert your name" />
 
-                <EditText
-                    android:id="@+id/edtEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:layout_marginTop="10dp"
-                    android:textSize="14sp"
-                    android:hint="Please insert your email." />
+                    </LinearLayout>
+                    <!--email disini-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textColor="@color/main_color_grey_700"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
-            <!--telepon disini-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                        <EditText
+                            android:id="@+id/edtEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:layout_marginTop="10dp"
+                            android:textSize="14sp"
+                            android:hint="Please insert your email." />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:textColor="@color/main_color_grey_700"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/edtPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="14sp"
-                    android:hint="Your Number Phone."
-                    android:inputType="number" />
+                    <!--telepon disini-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Phone"
+                            android:textColor="@color/main_color_grey_700"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
+                        <EditText
+                            android:id="@+id/edtPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="14sp"
+                            android:hint="Your Number Phone."
+                            android:inputType="number" />
 
-                <RadioGroup
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/rdGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rdFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimary"
-                    android:text="female"/>
-
-                <RadioButton
-                    android:id="@+id/rdMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimary"
-                    android:layout_marginLeft="10dp"
-                    android:text="male"/>
-
-                </RadioGroup>
+                    </LinearLayout>
 
 
-            <!--alamat title disini-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                        <RadioGroup
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/rdGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"
-                    android:text="Address"
-                    android:textColor="@color/main_color_grey_700"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                        <RadioButton
+                            android:id="@+id/rdFemale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorPrimary"
+                            android:text="female"/>
 
-                <EditText
-                    android:id="@+id/edtAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|top"
-                    android:hint="Sentuh disini untuk mengambil alamat.."
-                    android:inputType="textMultiLine"
-                    android:lines="5"
-                    android:focusable="false"
-                    android:longClickable="false"
-                    android:clickable="true"
-                    android:textSize="14sp"></EditText>
+                        <RadioButton
+                            android:id="@+id/rdMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorPrimary"
+                            android:layout_marginLeft="10dp"
+                            android:text="male"/>
 
-            </LinearLayout>
-            <!--alamat editext disini-->
+                        </RadioGroup>
 
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
 
-                android:background="@drawable/button_bg_rounded_corners"
-                android:text="Save Profile"
-                android:textColor="@color/textColorPrimary"
-                android:textStyle="bold" />
+                    <!--alamat title disini-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-        </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="left"
+                            android:text="Address"
+                            android:textColor="@color/main_color_grey_700"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/edtAlamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left|top"
+                            android:hint="Sentuh disini untuk mengambil alamat.."
+                            android:inputType="textMultiLine"
+                            android:lines="5"
+                            android:focusable="false"
+                            android:longClickable="false"
+                            android:clickable="true"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+                    <!--alamat editext disini-->
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+
+                        android:background="@drawable/button_bg_rounded_corners"
+                        android:text="Save Profile"
+                        android:textColor="@color/textColorPrimary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <include
+                android:id="@+id/lv_drawer_menu"
+                android:layout_width="@dimen/drawer_width_large"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                layout="@layout/list_view" />
+        </android.support.v4.widget.DrawerLayout>
 
 
     </LinearLayout>

@@ -1,121 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#e7e7e7"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
+    </LinearLayout>
 
-        <GridView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
-            android:divider="@null"
-            android:numColumns="2"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!---ini lyt cartlist-->
-        <LinearLayout
-            android:id="@+id/lytOrder"
-            android:visibility="visible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:orientation="vertical">
-
-            <View
-                android:id="@+id/divider_top"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimary" />
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <!-- bagian badge icon di mulai -->
+                <GridView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:divider="@null"
+                    android:numColumns="2"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
-                <RelativeLayout
-                    android:id="@+id/badge_layout1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <RelativeLayout
-                        android:id="@+id/relative_layout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/shop"
-                            android:scaleType="centerCrop" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/total_notif"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@id/relative_layout"
-                        android:background="@drawable/badge_item_count"
-                        android:text="0"
-                        android:textColor="#FFF"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-                <!-- end badge icon di sini -->
-
+                <!---ini lyt cartlist-->
                 <LinearLayout
+                    android:id="@+id/lytOrder"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#fff"
                     android:orientation="vertical">
 
-                    <TextView
+                    <View
+                        android:id="@+id/divider_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="Proses Order"
-                        android:textColor="@color/main_color_grey_500"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/txtTotal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text=""
-                        android:textColor="@color/main_color_grey_700"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        <!-- bagian badge icon di mulai -->
 
+                        <RelativeLayout
+                            android:id="@+id/badge_layout1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <RelativeLayout
+                                android:id="@+id/relative_layout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/shop"
+                                    android:scaleType="centerCrop" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/total_notif"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignRight="@id/relative_layout"
+                                android:background="@drawable/badge_item_count"
+                                android:text="0"
+                                android:textColor="#FFF"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                        <!-- end badge icon di sini -->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="Proses Order"
+                                android:textColor="@color/main_color_grey_500"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtTotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text=""
+                                android:textColor="@color/main_color_grey_700"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/prgLoading"
+                android:indeterminateDrawable="@drawable/progress_indeterminate"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
 
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/prgLoading"
-        android:indeterminateDrawable="@drawable/progress_indeterminate"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true" />
-
-
-</RelativeLayout>
+        <include
+            android:id="@+id/lv_drawer_menu"
+            android:layout_width="@dimen/drawer_width_large"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            layout="@layout/list_view" />
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

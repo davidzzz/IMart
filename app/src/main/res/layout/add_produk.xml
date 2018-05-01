@@ -5,182 +5,200 @@
     android:layout_weight="1"
     android:fillViewport="true">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:orientation="vertical">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"/>
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
 
-        <!-- ini mulai layout -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:layout_below="@+id/toolbar"
-            android:orientation="vertical"
-            android:padding="10dp" >
-            <!-- ini gambar dan nama produk -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal" >
+                android:background="#fff"
+                android:orientation="vertical">
 
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/toolbar"/>
 
+                <!-- ini mulai layout -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:background="#fff"
+                    android:layout_below="@+id/toolbar"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+                    <!-- ini gambar dan nama produk -->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/nameMenu"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/edtTitle"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginStart="5dp"
-                        android:hint="@string/hitMenu"
-                        android:inputType="text"
-                        android:textSize="14sp" />
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal" >
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/nameMenu"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/edtTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginStart="5dp"
+                                android:hint="@string/hitMenu"
+                                android:inputType="text"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!-- end produk nama -->
+
+
+                    <!-- Harga produk -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"  >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/price"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/edtPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/hitPrice"
+                            android:inputType="number"
+                            android:textSize="14sp" />
+                    </LinearLayout> <!-- end Harga produk -->
+
+
+
+                    <!-- status produk -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/status"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/rdGroup"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal" >
+
+                            <RadioButton
+                                android:id="@+id/rdReady"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rdReady"
+                                android:checked="true"
+                                android:buttonTint="@color/colorPrimary"
+                                android:textSize="10sp" />
+
+                            <RadioButton
+                                android:id="@+id/rdClose"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:buttonTint="@color/colorPrimary"
+                                android:text="@string/rdClose"
+                                android:textSize="10sp" />
+                        </RadioGroup>
+                    </LinearLayout><!-- end status produk -->
+
+                    <!-- Category produk -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center"
+                            android:text="@string/cat"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spinnerKat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="right"></Spinner>
+
+
+                    </LinearLayout><!--end Category produk -->
+
                 </LinearLayout>
-            </LinearLayout>
-            <!-- end produk nama -->
 
-
-            <!-- Harga produk -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"  >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/price"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edtPrice"
+                <Button
+                    android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/hitPrice"
-                    android:inputType="number"
-                    android:textSize="14sp" />
-            </LinearLayout> <!-- end Harga produk -->
-
-
-
-            <!-- status produk -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/status"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <RadioGroup
-                    android:id="@+id/rdGroup"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/rdReady"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rdReady"
-                        android:checked="true"
-                        android:buttonTint="@color/colorPrimary"
-                        android:textSize="10sp" />
-
-                    <RadioButton
-                        android:id="@+id/rdClose"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:buttonTint="@color/colorPrimary"
-                        android:text="@string/rdClose"
-                        android:textSize="10sp" />
-                </RadioGroup>
-            </LinearLayout><!-- end status produk -->
-
-            <!-- Category produk -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
-                    android:text="@string/cat"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/spinnerKat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="right"></Spinner>
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/button_bg_gmail"
+                    android:text="@string/add_produk"
+                    android:textColor="#fff"
+                    android:textStyle="bold"></Button>
 
 
-            </LinearLayout><!--end Category produk -->
+            </RelativeLayout>
+        </FrameLayout>
 
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_bg_gmail"
-            android:text="@string/add_produk"
-            android:textColor="#fff"
-            android:textStyle="bold"></Button>
-
-
-    </RelativeLayout>
+        <include
+            android:id="@+id/lv_drawer_menu"
+            android:layout_width="@dimen/drawer_width_large"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            layout="@layout/list_view" />
+    </android.support.v4.widget.DrawerLayout>
 </ScrollView>

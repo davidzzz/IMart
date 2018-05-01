@@ -8,362 +8,380 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <FrameLayout
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_width="match_parent">
 
-            <!--screen list order-->
-            <LinearLayout
-                android:id="@+id/lytOrder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/toolbar"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:visibility="gone">
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-
-                <LinearLayout
-                    android:id="@+id/lyt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/text1"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Detail Order item"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/toolbar"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                <com.imart.shop.view.ExpandableHeightListView
-                    android:id="@+id/listview"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@null" />
-
-                <!-- title keterangan order -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Notes Order item"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-                <!-- end title keterangan order -->
+                        <!--screen list order-->
+                        <LinearLayout
+                            android:id="@+id/lytOrder"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/toolbar"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:visibility="gone">
 
 
-                <!-- kolom keterangan order total -->
+                            <LinearLayout
+                                android:id="@+id/lyt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#fff"
+                                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff">
+                                <TextView
+                                    android:id="@+id/text1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Detail Order item"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/edtkoment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:gravity="left"
-                        android:hint="Insert your Description detail your order item. "
-                        android:textSize="14sp" />
-                </LinearLayout>
-                <!-- end kolom keterangan order total -->
+                            <com.imart.shop.view.ExpandableHeightListView
+                                android:id="@+id/listview"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:divider="@null" />
 
+                            <!-- title keterangan order -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:visibility="gone"
-                    android:padding="10dp">
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/cek"
-                        android:text="Pesan di tempat"/>
-                </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="#fff"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
-                    android:id="@+id/layout_antar"
-                    android:padding="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jam Pengantaran"/>
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000000"
-                        android:id="@+id/jam"/>
-                </LinearLayout>
+                                <TextView
+                                    android:id="@+id/text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Notes Order item"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <!-- end title keterangan order -->
 
 
-                <!-- title payment total -->
+                            <!-- kolom keterangan order total -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#fff">
 
-                    <TextView
-                        android:id="@+id/text3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total And Payment"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- end title payment total -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="#fff"
-                    android:id="@+id/layout_alamat"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Alamat anda"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <fragment
-                        android:id="@+id/map"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp" />
-
-                    <EditText
-                        android:id="@+id/edtAlamat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="start|bottom"
-                        android:hint="Edit this address if you change destination order."
-                        android:inputType="textMultiLine"
-                        android:lines="3"
-                        android:maxLines="7"
-                        android:scrollbars="vertical"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/des_alamat"
-                        android:textColor="@color/material_red_500" />
-
-                    <EditText
-                        android:id="@+id/edt_telp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:hint="@string/des_telp"
-                        android:inputType="number" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:id="@+id/layout_poin"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp">
-
-                    <TextView
-                        android:id="@+id/titlepoin"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:paddingLeft="10dp"
-                        android:text="Total Poin"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textPoin"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="end"
-                        android:paddingRight="10dp"
-                        android:text="0"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:id="@+id/layout_ongkir"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp">
-
-                    <TextView
-                        android:id="@+id/titleongkir"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:paddingLeft="10dp"
-                        android:text="Kurir"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtOngkir"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="end"
-                        android:paddingRight="10dp"
-                        android:text="0"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp">
-
-                    <TextView
-                        android:id="@+id/titleTotal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:paddingLeft="10dp"
-                        android:text="Sub Total"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textTotal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="end"
-                        android:paddingRight="10dp"
-                        android:text="0"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- end title payment total -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp">
-
-                    <TextView
-                        android:id="@+id/txtttl"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:paddingLeft="10dp"
-                        android:text="Total"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtsubtotl"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="end"
-                        android:paddingRight="10dp"
-                        android:text="0"
-                        android:textColor="@color/textColorPrimaryBlack"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnSend"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/button_bg_gmail"
-                    android:text="Send Order"
-                    android:textColor="#fff" />
-            </LinearLayout>
-            
-            <!--screen button-->
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/lytAlert"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginTop="170dp">
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/error"/>
+                                <EditText
+                                    android:id="@+id/edtkoment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="left"
+                                    android:hint="Insert your Description detail your order item. "
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                            <!-- end kolom keterangan order total -->
 
 
-                <Button
-                    android:id="@+id/btnUlang"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="ULANGI"
-                    android:textColor="@color/cpb_white"
-                    android:background="@color/colorPrimary"/>
-            </LinearLayout>
-            
-        </LinearLayout>
-    </ScrollView>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="#fff"
+                                android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:padding="10dp">
+                                <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/cek"
+                                    android:text="Pesan di tempat"/>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical"
+                                android:id="@+id/layout_antar"
+                                android:padding="10dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Jam Pengantaran"/>
+                                <Spinner
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#000000"
+                                    android:id="@+id/jam"/>
+                            </LinearLayout>
+
+
+                            <!-- title payment total -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="#fff"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/text3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Total And Payment"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <!-- end title payment total -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="#fff"
+                                android:id="@+id/layout_alamat"
+                                android:orientation="vertical"
+                                android:paddingLeft="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Alamat anda"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
+                                <fragment
+                                    android:id="@+id/map"
+                                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="170dp" />
+
+                                <EditText
+                                    android:id="@+id/edtAlamat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="start|bottom"
+                                    android:hint="Edit this address if you change destination order."
+                                    android:inputType="textMultiLine"
+                                    android:lines="3"
+                                    android:maxLines="7"
+                                    android:scrollbars="vertical"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/des_alamat"
+                                    android:textColor="@color/material_red_500" />
+
+                                <EditText
+                                    android:id="@+id/edt_telp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:hint="@string/des_telp"
+                                    android:inputType="number" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#fff"
+                                android:id="@+id/layout_poin"
+                                android:orientation="horizontal"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/titlepoin"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:paddingLeft="10dp"
+                                    android:text="Total Poin"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textPoin"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="end"
+                                    android:paddingRight="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#fff"
+                                android:id="@+id/layout_ongkir"
+                                android:orientation="horizontal"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/titleongkir"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:paddingLeft="10dp"
+                                    android:text="Kurir"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtOngkir"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="end"
+                                    android:paddingRight="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#fff"
+                                android:orientation="horizontal"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/titleTotal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:paddingLeft="10dp"
+                                    android:text="Sub Total"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textTotal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="end"
+                                    android:paddingRight="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <!-- end title payment total -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#fff"
+                                android:orientation="horizontal"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/txtttl"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:paddingLeft="10dp"
+                                    android:text="Total"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtsubtotl"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="end"
+                                    android:paddingRight="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/textColorPrimaryBlack"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btnSend"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/button_bg_gmail"
+                                android:text="Send Order"
+                                android:textColor="#fff" />
+                        </LinearLayout>
+
+                        <!--screen button-->
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/lytAlert"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginTop="170dp">
+
+                            <TextView
+                                android:layout_width="250dp"
+                                android:gravity="center"
+                                android:layout_height="wrap_content"
+                                android:text="@string/error"/>
+
+
+                            <Button
+                                android:id="@+id/btnUlang"
+                                android:layout_marginTop="20dp"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="ULANGI"
+                                android:textColor="@color/cpb_white"
+                                android:background="@color/colorPrimary"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+            </ScrollView>
+        </FrameLayout>
+
+        <include
+            android:id="@+id/lv_drawer_menu"
+            android:layout_width="@dimen/drawer_width_large"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            layout="@layout/list_view" />
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

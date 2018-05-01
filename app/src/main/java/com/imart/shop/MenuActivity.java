@@ -40,9 +40,7 @@ import java.util.Locale;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
-public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = MenuActivity.class.getSimpleName();
-    private Toolbar toolbar;
+public class MenuActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout lytProfile, lytMenu, lytOrder, lytPoin;
     //ambil data dari session
     SessionManager session;
@@ -55,11 +53,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_user);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.setting_title));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         imgProfile = (ImageView) findViewById(R.id.imgProfile);
         txtnama = (TextView) findViewById(R.id.txtnama);
         txtkode = (TextView) findViewById(R.id.userid);

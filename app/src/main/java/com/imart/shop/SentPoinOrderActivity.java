@@ -25,8 +25,7 @@ import com.imart.shop.util.Constant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SentPoinOrderActivity extends AppCompatActivity {
-    Toolbar toolbar;
+public class SentPoinOrderActivity extends BaseActivity {
     String nomorUser, idOrder;
     EditText teksTransaksi;
     TextView teksTotal, teksPoin;
@@ -40,11 +39,7 @@ public class SentPoinOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sent_poin_order);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("SENT POIN AUTOMATIC");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         teksTransaksi = (EditText) findViewById(R.id.nomor_transaksi);
         btnSend = (Button) findViewById(R.id.btn_send);
         teksTotal = (TextView) findViewById(R.id.total_order);

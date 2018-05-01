@@ -27,7 +27,7 @@ import com.imart.shop.util.Constant;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class HelpDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class HelpDetailActivity extends BaseActivity implements OnMapReadyCallback {
     int id;
     double latitude, longitude;
     GoogleMap gMap;
@@ -37,12 +37,8 @@ public class HelpDetailActivity extends AppCompatActivity implements OnMapReadyC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_detail);
         id = getIntent().getIntExtra("id", 0);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
         getSupportActionBar().setIcon(R.drawable.logo_imart);
         getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         if (id == 1) {
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);

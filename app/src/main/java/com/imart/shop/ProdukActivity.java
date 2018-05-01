@@ -2,6 +2,7 @@ package com.imart.shop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,8 +48,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdukActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+public class ProdukActivity extends BaseActivity {
     private GridView listview;
     private AdapterSinz adapter = null;
     private List<ItemMenu> arraylist;
@@ -67,11 +67,7 @@ public class ProdukActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.produk_list);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.Produk_title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         arraylist = new ArrayList<ItemMenu>();
         total_notif = (TextView) findViewById(R.id.total_notif);
@@ -137,6 +133,7 @@ public class ProdukActivity extends AppCompatActivity {
                 item.setIdMenu(feedObj.getString("id"));
                 item.setNamaMenu(feedObj.getString("nama"));
                 item.setHarga(feedObj.getInt("harga"));
+                item.setHargaDiskon(feedObj.getInt("hargaDiskon"));
                 item.setSatuan(feedObj.getString("satuan"));
                 item.setPoin(feedObj.getInt("poin"));
                 item.setDeskripsi(feedObj.getString("deskripsi"));
@@ -284,6 +281,38 @@ public class ProdukActivity extends AppCompatActivity {
             harga.setText("Rp " + format);
             TextView satuan = (TextView) convertView.findViewById(R.id.satuan);
             satuan.setText(" / " + item.getSatuan());
+            if (item.getHargaDiskon() != 0) {
+                harga.setPaintFlags(harga.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                satuan.setPaintFlags(harga.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            }
+
+            TextView harga1 = (TextView) convertView.findViewById(R.id.textharga1);
+            String format1 = formatData.format(item.getHargaDiskon());
+            if (item.getHargaDiskon() != 0) {
+                harga1.setText("Rp " + format1);
+            } else {
+                harga1.setVisibility(View.INVISIBLE);
+            }
+            TextView satuan1 = (TextView) convertView.findViewById(R.id.satuan1);
+            if (item.getHargaDiskon() != 0) {
+                satuan1.setText(" / " + item.getSatuan());
+            } else {
+                harga1.setVisibility(View.INVISIBLE);
+            }
+
+            TextView harga2 = (TextView) convertView.findViewById(R.id.textharga2);
+            String format2 = formatData.format(item.getHarga() - item.getHargaDiskon());
+            if (item.getHargaDiskon() != 0) {
+                harga2.setText("Rp " + format2);
+            } else {
+                harga2.setVisibility(View.INVISIBLE);
+            }
+            TextView satuan2 = (TextView) convertView.findViewById(R.id.satuan2);
+            if (item.getHargaDiskon() != 0) {
+                satuan2.setText(" / " + item.getSatuan());
+            } else {
+                harga2.setVisibility(View.INVISIBLE);
+            }
 
             Button plus = (Button) convertView.findViewById(R.id.btnplus);
             Button min = (Button) convertView.findViewById(R.id.btnmin);
@@ -295,8 +324,9 @@ public class ProdukActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (isLogin()) {
+                        int harga = qty.getHargaDiskon() == 0 ? qty.getHarga() : qty.getHargaDiskon();
                         qty.setQuantity(qty.getQuantity() + 1);
-                        int SubTotal = (qty.getQuantity() * qty.getHarga());
+                        int SubTotal = (qty.getQuantity() * harga);
                         qty.setTotal(SubTotal);
                         poin += qty.getPoin();
                         Cart cart = findCart(qty.getIdMenu());
@@ -308,7 +338,7 @@ public class ProdukActivity extends AppCompatActivity {
                             cart.setIdMenu(qty.getIdMenu());
                             cart.setNamaMenu(qty.getNamaMenu());
                             cart.setQuantity(qty.getQuantity());
-                            cart.setHarga(qty.getHarga());
+                            cart.setHarga(harga);
                             cart.setPoin(qty.getPoin());
                             cart.setTotal(SubTotal);
                             cart.setGambar(qty.getGambar());
@@ -316,7 +346,7 @@ public class ProdukActivity extends AppCompatActivity {
                             cartList.add(cart);
                         }
                         notifyDataSetChanged();
-                        TotalAmount(qty.getHarga());
+                        TotalAmount(harga);
                     }else{
                         Intent login = new Intent(context, LoginActivity.class);
                         startActivity(login);
@@ -331,6 +361,7 @@ public class ProdukActivity extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
+                    int harga = qty.getHargaDiskon() == 0 ? qty.getHarga() : qty.getHargaDiskon();
                     Cart cart = findCart(qty.getIdMenu());
                     if (qty.getQuantity() == 0) {
                         Toast.makeText(context, "Kamu belum order produk ini.", Toast.LENGTH_SHORT).show();
@@ -341,10 +372,10 @@ public class ProdukActivity extends AppCompatActivity {
                         poin -= qty.getPoin();
                         cartList.remove(cart);
                         notifyDataSetChanged();
-                        TotalAmount(-qty.getHarga());
+                        TotalAmount(-harga);
                     } else {
                         qty.setQuantity(qty.getQuantity() - 1);
-                        int SubTotal = (qty.getQuantity() * qty.getHarga());
+                        int SubTotal = (qty.getQuantity() * harga);
                         qty.setTotal(SubTotal);
                         poin -= qty.getPoin();
                         if (cart != null) {
@@ -355,7 +386,7 @@ public class ProdukActivity extends AppCompatActivity {
                             cart.setIdMenu(qty.getIdMenu());
                             cart.setNamaMenu(qty.getNamaMenu());
                             cart.setQuantity(qty.getQuantity());
-                            cart.setHarga(qty.getHarga());
+                            cart.setHarga(harga);
                             cart.setPoin(qty.getPoin());
                             cart.setTotal(SubTotal);
                             cart.setGambar(qty.getGambar());
@@ -363,7 +394,7 @@ public class ProdukActivity extends AppCompatActivity {
                             cartList.add(cart);
                         }
                         notifyDataSetChanged();
-                        TotalAmount(-qty.getHarga());
+                        TotalAmount(-harga);
                     }
                 }
             });

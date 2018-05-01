@@ -11,9 +11,22 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <FrameLayout
-        android:id="@+id/pager"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/pager"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+
+        <include
+            android:id="@+id/lv_drawer_menu"
+            android:layout_width="@dimen/drawer_width_large"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            layout="@layout/list_view" />
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

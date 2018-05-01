@@ -26,24 +26,4 @@
             android:scaleType="fitXY"
             android:src="@drawable/loading" />
     </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/lytThumb"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/txtText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:minLines="1"
-                android:padding="10dp"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </RelativeLayout>
+</RelativeLayout>

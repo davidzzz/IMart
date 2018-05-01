@@ -80,10 +80,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CartActivity extends AppCompatActivity
+public class CartActivity extends BaseActivity
         implements View.OnClickListener, OnMapReadyCallback, RouteDraw.onDrawRoute, EasyPermission.OnPermissionResult, LocationListener {
     private static final String TAG = CartActivity.class.getSimpleName();
-    private Toolbar toolbar;
     private ExpandableHeightListView list;
     private ArrayList<Cart> cartList;
     private ArrayList<Antar> listAntar;
@@ -99,14 +98,14 @@ public class CartActivity extends AppCompatActivity
     String URL_SEND, URL_CONF, URL_LOKASI, URL_REK;
     Button btnSend;
     Antar antar;
-    String idAntar;
+    String idAntar, status = "";
     double latitude, longitude;
     EditText edtkoment, edtAlamat, edt_telp;
     int Total = 0; //total harga menulist
     int ongkir = 0; //ini total ongkir
     int subTotal = 0; //ini subtotal
     int meter = 0;
-    int perkm = 0;
+    int perkm = 0, fix = 0;
     int poin = 0;
     int totalBarang = 0, totalItem = 0;
     boolean onTheSpot = false;
@@ -122,11 +121,7 @@ public class CartActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_list);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.checkout);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         gps = new GPSTracker(this);
 
         lytOrder =(LinearLayout)findViewById(R.id.lytOrder);
@@ -196,7 +191,7 @@ public class CartActivity extends AppCompatActivity
         setSpin();
 
         URL_SEND = Constant.URLADMIN + "api/send_order.php";
-        URL_CONF = Constant.URLAPI + "key=" + Constant.KEY + "&tag=konfigurasi&id=4";
+        URL_CONF = Constant.URLAPI + "key=" + Constant.KEY + "&tag=konfigurasi&id=9";
         URL_REK = Constant.URLAPI + "key=" + Constant.KEY + "&tag=konfigurasi&id=7";
         URL_LOKASI = Constant.URLAPI + "key=" + Constant.KEY + "&tag=lokasiToko";
         cartList = getIntent().getParcelableArrayListExtra("cartList");
@@ -299,12 +294,12 @@ public class CartActivity extends AppCompatActivity
         if (!onTheSpot) {
             teksOngkir.setVisibility(View.VISIBLE);
             valueOngkir.setVisibility(View.VISIBLE);
-            valueOngkir.setText("Rp " + ongkir);
+            valueOngkir.setText(formatduit.format(ongkir));
             teksAlamat.setVisibility(View.VISIBLE);
             teksAlamat.setText("Dikirim ke " + alamat);
         }
         teksRekening.setText("Silahkan melakukan pembayaran ke nomor rekening ini\n" + norek);
-        teksTotal.setText("Rp " + formatduit.format(totalBarang));
+        teksTotal.setText(formatduit.format(totalBarang));
         teksGrandTotal.setText("Rp " + formatduit.format(subTotal));
         teksTotalItem.setText(totalItem + "");
         Button cancel = (Button) dialog.findViewById(R.id.cancel);
@@ -480,7 +475,41 @@ public class CartActivity extends AppCompatActivity
             public void onResponse(JSONObject response) {
                 try {
                     JSONObject feedObj = response.getJSONObject("data");
+                    status = feedObj.getString("value");
+                } catch (JSONException e) {
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        jsonKate.setRetryPolicy(new DefaultRetryPolicy(5000, 20, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        myapp.getInstance().addToRequestQueue(jsonKate);
+        URL_CONF = Constant.URLAPI + "key=" + Constant.KEY + "&tag=konfigurasi&id=4";
+        jsonKate = new JsonObjectRequest(Request.Method.GET, URL_CONF, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONObject feedObj = response.getJSONObject("data");
                     perkm = feedObj.getInt("value");
+                } catch (JSONException e) {
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        URL_CONF = Constant.URLAPI + "key=" + Constant.KEY + "&tag=konfigurasi&id=8";
+        jsonKate.setRetryPolicy(new DefaultRetryPolicy(5000, 20, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        myapp.getInstance().addToRequestQueue(jsonKate);
+        jsonKate = new JsonObjectRequest(Request.Method.GET, URL_CONF, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONObject feedObj = response.getJSONObject("data");
+                    fix = feedObj.getInt("value");
                 } catch (JSONException e) {
                 }
             }
@@ -568,10 +597,16 @@ public class CartActivity extends AppCompatActivity
             JSONObject b = a.getJSONObject("distance");
             alamat = a.getString("start_address");
             meter = b.getInt("value");
-            ongkir = ((int) Math.ceil(meter/ 1000.0)* perkm);
+            if (status.equals("0")) {
+                ongkir = ((int) Math.ceil(meter / 1000.0) * perkm);
+            } else {
+                ongkir = fix;
+            }
             edtAlamat.setText(alamat);
             txtOngkir.setText(formatduit.format(ongkir)+"");
-            titleongkir.setText("Jarak ("+(int) Math.ceil(meter/ 1000.0)+" km x "+ formatduit.format(perkm) +")");
+            if (status.equals("0")) {
+                titleongkir.setText("Jarak (" + (int) Math.ceil(meter / 1000.0) + " km x " + formatduit.format(perkm) + ")");
+            }
             subTotal = ongkir + totalBarang;
             txtsubtotl.setText(formatduit.format(subTotal)+"");
         } catch (JSONException e) {

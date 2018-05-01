@@ -57,7 +57,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -335,13 +334,14 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     private void KateData() {
-        Cache cache = myapp.getInstance().getRequestQueue().getCache();
+        /*Cache cache = myapp.getInstance().getRequestQueue().getCache();
         Cache.Entry entry = cache.get(URLKATE);
         if (entry != null) {
             // fetch the data from cache
             try {
                 String data = new String(entry.data, "UTF-8");
                 try {
+                    itemList.clear();
                     parseJsonKategory(new JSONObject(data));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -349,7 +349,7 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else {*/
             // Creating a json array request
             JsonObjectRequest jsonKate = new JsonObjectRequest(Request.Method.GET, URLKATE, null, new Response.Listener<JSONObject>() {
                 @Override
@@ -368,7 +368,7 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             });
             jsonKate.setRetryPolicy(new DefaultRetryPolicy(5000, 20, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             myapp.getInstance().addToRequestQueue(jsonKate);
-        }
+        //}
     }
 
     private void statistik() {
@@ -516,6 +516,7 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     JSONObject feedObj = response.getJSONObject("data");
                     int color = feedObj.getInt("value");
                     colorValue = Color.parseColor("#" + String.format("%06x", color));
+                    Constant.COLORVALUE = colorValue;
                     RelativeLayout layout = (RelativeLayout) getActivity().findViewById(R.id.layout_main);
                     layout.setBackgroundColor(colorValue);
                     LinearLayout homeLayout = (LinearLayout) getActivity().findViewById(R.id.layout_home);

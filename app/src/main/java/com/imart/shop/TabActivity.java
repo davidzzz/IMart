@@ -27,11 +27,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class TabActivity extends AppCompatActivity {
+public class TabActivity extends BaseActivity {
     ViewPager pager;
     TabAdapter adapter;
     TabLayout tabs;
-    Toolbar mToolbar;
     HashMap<String, String> user;
     String tipe, akses;
     OrderList orderList, historyList;
@@ -44,12 +43,8 @@ public class TabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
         tipe = getIntent().getStringExtra("tipe");
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
         getSupportActionBar().setIcon(R.drawable.logo_imart);
         getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         LinearLayout layoutPoin = (LinearLayout) findViewById(R.id.layout_poin);
         SessionManager session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();

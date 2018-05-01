@@ -43,11 +43,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Random;
 
-public class SpinActivity extends AppCompatActivity {
+public class SpinActivity extends BaseActivity {
     private ImageView ivWheel;
     private Button rotate;
     private float initDegree = 0.0f;
-    Toolbar mToolbar;
     TextView teksPoin;
     String URL, URL_SEND, URL_CONF, URL_POIN, userid;
     int idArray[] = {R.id.prize1, R.id.prize2, R.id.prize3, R.id.prize4, R.id.prize5, R.id.prize6, R.id.prize7, R.id.prize8};
@@ -62,11 +61,7 @@ public class SpinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spin);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("JACKPOT");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         poin = Integer.parseInt(user.get(SessionManager.KEY_POIN));

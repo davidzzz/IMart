@@ -36,8 +36,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class KonfirmasiPoinActivity extends AppCompatActivity {
-    Toolbar toolbar;
+public class KonfirmasiPoinActivity extends BaseActivity {
     TextView teksNomorResi, teksTotalOrder, teksPoin, teksNomorUser, teksNama, teksNoHP;
     Button konfirmasi;
     String URL, URLPOIN, nomorResi, totalOrder, poin, nomorUser, id, idOrder;
@@ -47,11 +46,7 @@ public class KonfirmasiPoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_konfirmasi_poin);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("KONFIRMASI");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         teksNomorResi = (TextView) findViewById(R.id.nomor_resi);
         teksTotalOrder = (TextView) findViewById(R.id.total_order);
         teksPoin = (TextView) findViewById(R.id.poin);

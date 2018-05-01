@@ -3,6 +3,7 @@ package com.imart.shop;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.v4.app.FragmentTransaction;
@@ -42,7 +43,7 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class KategoriActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class KategoriActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     Toolbar mToolbar;
     SubAdapter adapter;
     String akses;
@@ -61,11 +62,7 @@ public class KategoriActivity extends AppCompatActivity implements SearchView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kategori);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("KATEGORI");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         akses = user.get(SessionManager.KEY_AKSES);
@@ -96,6 +93,12 @@ public class KategoriActivity extends AppCompatActivity implements SearchView.On
         searchView.setIconified(false);
         searchView.setBackgroundResource(R.drawable.edittext_top_bg);
         searchView.setOnQueryTextListener(this);
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        TextView textView = (TextView) searchView.findViewById(id);
+        textView.setTextColor(Color.BLACK);
+        id = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        View v = searchView.findViewById(id);
+        v.setBackgroundColor(Color.WHITE);
         MenuItem shop = menu.findItem(R.id.shop);
         if (akses.equals("1")) {
             MenuItemCompat.setActionView(shop, R.layout.badge);

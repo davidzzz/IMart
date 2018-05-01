@@ -41,8 +41,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class AddProduk extends AppCompatActivity {
-    private Toolbar toolbar;
+public class AddProduk extends BaseActivity {
     Button btnAdd;
     Spinner spin;
     String nama, price, status;
@@ -61,12 +60,8 @@ public class AddProduk extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_produk);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         id_menu = getIntent().getStringExtra("id");
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(id_menu != null ? "Edit" : "Tambah" + " Produk");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         userid = user.get(SessionManager.KEY_PASSENGER_ID);

@@ -2,6 +2,7 @@ package com.imart.shop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -124,6 +125,7 @@ public class SearchFragment extends Fragment {
                 item.setIdMenu(feedObj.getString("id"));
                 item.setNamaMenu(feedObj.getString("nama"));
                 item.setHarga(feedObj.getInt("harga"));
+                item.setHargaDiskon(feedObj.getInt("hargaDiskon"));
                 item.setSatuan(feedObj.getString("satuan"));
                 item.setPoin(feedObj.getInt("poin"));
                 item.setDeskripsi(feedObj.getString("deskripsi"));
@@ -267,6 +269,38 @@ public class SearchFragment extends Fragment {
             harga.setText("Rp " + format);
             TextView satuan = (TextView) convertView.findViewById(R.id.satuan);
             satuan.setText(" / " + item.getSatuan());
+            if (item.getHargaDiskon() != 0) {
+                harga.setPaintFlags(harga.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                satuan.setPaintFlags(harga.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            }
+
+            TextView harga1 = (TextView) convertView.findViewById(R.id.textharga1);
+            String format1 = formatData.format(item.getHargaDiskon());
+            if (item.getHargaDiskon() != 0) {
+                harga1.setText("Rp " + format1);
+            } else {
+                harga1.setVisibility(View.INVISIBLE);
+            }
+            TextView satuan1 = (TextView) convertView.findViewById(R.id.satuan1);
+            if (item.getHargaDiskon() != 0) {
+                satuan1.setText(" / " + item.getSatuan());
+            } else {
+                harga1.setVisibility(View.INVISIBLE);
+            }
+
+            TextView harga2 = (TextView) convertView.findViewById(R.id.textharga2);
+            String format2 = formatData.format(item.getHarga() - item.getHargaDiskon());
+            if (item.getHargaDiskon() != 0) {
+                harga2.setText("Rp " + format2);
+            } else {
+                harga2.setVisibility(View.INVISIBLE);
+            }
+            TextView satuan2 = (TextView) convertView.findViewById(R.id.satuan2);
+            if (item.getHargaDiskon() != 0) {
+                satuan2.setText(" / " + item.getSatuan());
+            } else {
+                harga2.setVisibility(View.INVISIBLE);
+            }
 
             Button plus = (Button) convertView.findViewById(R.id.btnplus);
             Button min = (Button) convertView.findViewById(R.id.btnmin);
@@ -278,8 +312,9 @@ public class SearchFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (isLogin()) {
+                        int harga = qty.getHargaDiskon() == 0 ? qty.getHarga() : qty.getHargaDiskon();
                         qty.setQuantity(qty.getQuantity() + 1);
-                        int SubTotal = (qty.getQuantity() * qty.getHarga());
+                        int SubTotal = (qty.getQuantity() * harga);
                         qty.setTotal(SubTotal);
                         poin += qty.getPoin();
                         Cart cart = findCart(qty.getIdMenu());
@@ -291,7 +326,7 @@ public class SearchFragment extends Fragment {
                             cart.setIdMenu(qty.getIdMenu());
                             cart.setNamaMenu(qty.getNamaMenu());
                             cart.setQuantity(qty.getQuantity());
-                            cart.setHarga(qty.getHarga());
+                            cart.setHarga(harga);
                             cart.setPoin(qty.getPoin());
                             cart.setTotal(SubTotal);
                             cart.setGambar(qty.getGambar());
@@ -299,7 +334,7 @@ public class SearchFragment extends Fragment {
                             cartList.add(cart);
                         }
                         notifyDataSetChanged();
-                        TotalAmount(qty.getHarga());
+                        TotalAmount(harga);
                     }else{
                         Intent login = new Intent(getActivity(), LoginActivity.class);
                         startActivity(login);
@@ -314,6 +349,7 @@ public class SearchFragment extends Fragment {
 
                 @Override
                 public void onClick(View v) {
+                    int harga = qty.getHargaDiskon() == 0 ? qty.getHarga() : qty.getHargaDiskon();
                     Cart cart = findCart(qty.getIdMenu());
                     if (qty.getQuantity() == 0) {
                         Toast.makeText(getActivity(), "Kamu belum order produk ini.", Toast.LENGTH_SHORT).show();
@@ -324,10 +360,10 @@ public class SearchFragment extends Fragment {
                         poin -= qty.getPoin();
                         cartList.remove(cart);
                         notifyDataSetChanged();
-                        TotalAmount(-qty.getHarga());
+                        TotalAmount(-harga);
                     } else {
                         qty.setQuantity(qty.getQuantity() - 1);
-                        int SubTotal = (qty.getQuantity() * qty.getHarga());
+                        int SubTotal = (qty.getQuantity() * harga);
                         qty.setTotal(SubTotal);
                         poin -= qty.getPoin();
                         if (cart != null) {
@@ -338,7 +374,7 @@ public class SearchFragment extends Fragment {
                             cart.setIdMenu(qty.getIdMenu());
                             cart.setNamaMenu(qty.getNamaMenu());
                             cart.setQuantity(qty.getQuantity());
-                            cart.setHarga(qty.getHarga());
+                            cart.setHarga(harga);
                             cart.setPoin(qty.getPoin());
                             cart.setTotal(SubTotal);
                             cart.setGambar(qty.getGambar());
@@ -346,7 +382,7 @@ public class SearchFragment extends Fragment {
                             cartList.add(cart);
                         }
                         notifyDataSetChanged();
-                        TotalAmount(-qty.getHarga());
+                        TotalAmount(-harga);
                     }
                 }
             });

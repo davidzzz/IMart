@@ -36,8 +36,7 @@ import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Map;
 
-public class OrderDetail extends AppCompatActivity {
-    private Toolbar toolbar;
+public class OrderDetail extends BaseActivity {
     TextView txtTotal, txtName, txtStatus,textNotes,txtbiodata,txtOngkir,txtSubtotal, orderList;
     Button btnCancel, btnAcpt, btnSend, btnEmail;
     String ID, URL_CANCEL, userid, URL_ACCEPT;
@@ -51,11 +50,7 @@ public class OrderDetail extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Order Detail");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         lytbtn = (LinearLayout)findViewById(R.id.lytbtn);
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();

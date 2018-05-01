@@ -2,7 +2,7 @@ package com.imart.shop.model;
 
 public class ItemMenu {
     private String idMenu, namaMenu, deskripsi, gambar, satuan;
-    private int harga;
+    private int harga, hargaDiskon;
     private int total = 0;
     private int quantity = 0;
     private int poin = 0;
@@ -41,6 +41,14 @@ public class ItemMenu {
 
     public void setHarga(int harga) {
         this.harga = harga;
+    }
+
+    public int getHargaDiskon() {
+        return hargaDiskon;
+    }
+
+    public void setHargaDiskon(int hargaDiskon) {
+        this.hargaDiskon = hargaDiskon;
     }
 
     public String getSatuan() {

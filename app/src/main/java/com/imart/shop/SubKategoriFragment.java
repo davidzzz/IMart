@@ -3,12 +3,12 @@ package com.imart.shop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,7 +32,7 @@ import java.util.HashMap;
 
 public class SubKategoriFragment extends Fragment {
     View view;
-    GridView gridView;
+    ListView gridView;
     ArrayList<ItemSub> itemList;
     SubAdapter adapter;
     String URLKATE, akses, id;
@@ -55,7 +55,7 @@ public class SubKategoriFragment extends Fragment {
             colorValue = bundle.getInt("color", 0);
             id = bundle.getString("id");
         }
-        gridView = (GridView) view.findViewById(R.id.gridView);
+        gridView = (ListView) view.findViewById(R.id.gridView);
         loading = (ProgressBar) view.findViewById(R.id.prgLoading);
         itemList = new ArrayList<>();
         adapter = new SubAdapter(getActivity(), itemList, colorValue);

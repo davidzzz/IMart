@@ -34,9 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ListSeller extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
-    private static final String TAG = ListSeller.class.getSimpleName();
-    private Toolbar toolbar;
+public class ListSeller extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     private List<ItemMenu> itemList;
     private ItemMenu object;
     private ListView list;
@@ -50,11 +48,7 @@ public class ListSeller extends AppCompatActivity implements SwipeRefreshLayout.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_seller);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Your Product");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         userid = user.get(session.KEY_PASSENGER_ID);

@@ -18,8 +18,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.imart.shop.util.Constant;
 
-public class SentPoinActivity extends AppCompatActivity {
-    Toolbar toolbar;
+public class SentPoinActivity extends BaseActivity {
     Button btnQRScan, btnManualScan, btnOK, btnCancel;
     LinearLayout layoutScan, layoutManualScan;
     EditText teksNomorResi, teksTotalOrder, teksPoin, teksNomorUser;
@@ -29,11 +28,7 @@ public class SentPoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sent_poin);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("SENT POIN MANUAL");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         layoutScan = (LinearLayout) findViewById(R.id.layout_scan);
         layoutManualScan = (LinearLayout) findViewById(R.id.layout_manual_scan);
         layoutManualScan.setVisibility(View.GONE);

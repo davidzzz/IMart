@@ -125,9 +125,6 @@
             android:name="com.imart.shop.SpinActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imart.shop.HelpActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.imart.shop.HelpDetailActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -155,15 +152,8 @@
             android:name="com.imart.shop.SentPoinOrderActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imart.shop.FeedbackActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.imart.shop.FeedbackDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.imart.shop.SubKategoriActivity"
             android:theme="@style/MyMaterialTheme" />
-        <activity android:name="com.imart.shop.WishlistActivity" />
         <activity android:name="com.imart.shop.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

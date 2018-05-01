@@ -57,18 +57,12 @@ public class SubAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.sub_item, null);
 
         SquareImage thumbNail = (SquareImage) convertView.findViewById(R.id.imgThumb);
-        TextView name = (TextView) convertView.findViewById(R.id.txtText);
         ItemSub itemlatest = itemList.get(position);
-        if (activity.getClass().getSimpleName().equals(SubKategoriActivity.class.getSimpleName())) {
-            name.setText(itemlatest.getName());
-        }
         RelativeLayout layout = (RelativeLayout) convertView.findViewById(R.id.layout_list);
         layout.setBackgroundColor(colorValue);
         Glide.with(activity)
                 .load(Constant.URLADMIN + itemlatest.getImage())
                 .placeholder(R.drawable.loading)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
                 .into(thumbNail);
 
         return convertView;

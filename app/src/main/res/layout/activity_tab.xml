@@ -11,67 +11,90 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <LinearLayout
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:id="@+id/layout_poin">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="1dp"
-                android:text="Poin : "
-                android:textAlignment="inherit"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/poin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="0"
-                android:textAlignment="inherit"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:id="@+id/layout_poin">
 
-        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/spin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.53"
-            android:background="@drawable/add_selector"
-            android:visibility="gone"
-            android:text="JACKPOT" />
-    </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="1dp"
+                            android:text="Poin : "
+                            android:textAlignment="inherit"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        app:tabPaddingStart="-1dp"
-        app:tabPaddingEnd="-1dp"
-        app:tabIndicatorHeight="4dp"
-        app:tabIndicatorColor="#62db02"
-        app:tabTextColor="#62db02"
-        app:tabSelectedTextColor="#62db02"
-        android:background="#ffffff"/>
+                        <TextView
+                            android:id="@+id/poin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:text="0"
+                            android:textAlignment="inherit"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/spin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.53"
+                        android:background="@drawable/add_selector"
+                        android:visibility="gone"
+                        android:text="JACKPOT" />
+                </LinearLayout>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    app:tabPaddingStart="-1dp"
+                    app:tabPaddingEnd="-1dp"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabIndicatorColor="#62db02"
+                    app:tabTextColor="#62db02"
+                    app:tabSelectedTextColor="#62db02"
+                    android:background="#ffffff"/>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <include
+            android:id="@+id/lv_drawer_menu"
+            android:layout_width="@dimen/drawer_width_large"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            layout="@layout/list_view" />
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

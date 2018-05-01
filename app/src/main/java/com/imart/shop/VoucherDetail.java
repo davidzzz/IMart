@@ -26,8 +26,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class VoucherDetail extends AppCompatActivity {
-    Toolbar toolbar;
+public class VoucherDetail extends BaseActivity {
     int id;
     String URL;
 
@@ -35,11 +34,7 @@ public class VoucherDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voucher_detail);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Voucher");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         id = getIntent().getIntExtra("id", 0);
         URL = Constant.URLADMIN + "api/voucher.php?key=" + Constant.KEY + "&tag=listdetail&id=" + id;
         viewVoucher();

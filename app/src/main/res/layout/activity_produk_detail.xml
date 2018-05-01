@@ -12,102 +12,135 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <com.daimajia.slider.library.SliderLayout
-        android:id="@+id/slider"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:orientation="vertical">
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:id="@+id/nama"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/harga"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/poin"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/deskripsi"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:id="@+id/layout_porsi"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnmin"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:text="-"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:textColor="@color/textColorPrimaryBlack" />
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
-                <TextView
-                    android:id="@+id/qty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:text="0"
-                    android:textColor="@color/textColorPrimaryBlack"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnplus"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:text="+"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:textColor="@color/textColorPrimaryBlack" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_porsi"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:textStyle="bold"
-                    android:text="Total: Rp. 0"
-                    android:id="@+id/total"/>
+                    android:padding="10dp"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/order"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:background="@drawable/button_beli"
-                    android:textColor="@color/cpb_white"
-                    android:text="ORDER"
-                    android:textSize="19sp"
-                    android:textStyle="bold"
-                    />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:id="@+id/nama"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/harga"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/hargaDiskon"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/poin"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/deskripsi"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:id="@+id/layout_porsi"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btnmin"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:text="-"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:textColor="@color/textColorPrimaryBlack" />
+
+                            <TextView
+                                android:id="@+id/qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:text="0"
+                                android:textColor="@color/textColorPrimaryBlack"
+                                android:textSize="19sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnplus"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:text="+"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:textColor="@color/textColorPrimaryBlack" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/layout_porsi"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textStyle="bold"
+                                android:text="Total: Rp. 0"
+                                android:id="@+id/total"/>
+
+                            <Button
+                                android:id="@+id/order"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@drawable/button_beli"
+                                android:textColor="@color/cpb_white"
+                                android:text="ORDER"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+        </FrameLayout>
+
+        <include
+            android:id="@+id/lv_drawer_menu"
+            android:layout_width="@dimen/drawer_width_large"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            layout="@layout/list_view" />
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

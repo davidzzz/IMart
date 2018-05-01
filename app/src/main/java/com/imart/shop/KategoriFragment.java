@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,7 +33,7 @@ import java.util.HashMap;
 
 public class KategoriFragment extends Fragment {
     View view;
-    GridView gridView;
+    ListView gridView;
     ArrayList<ItemSub> itemList;
     SubAdapter adapter;
     String URLKATE, akses;
@@ -54,7 +55,7 @@ public class KategoriFragment extends Fragment {
         if (bundle != null) {
             colorValue = bundle.getInt("color", 0);
         }
-        gridView = (GridView) view.findViewById(R.id.gridView);
+        gridView = (ListView) view.findViewById(R.id.gridView);
         loading = (ProgressBar) view.findViewById(R.id.prgLoading);
         itemList = new ArrayList<>();
         adapter = new SubAdapter(getActivity(), itemList, colorValue);

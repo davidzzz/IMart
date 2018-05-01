@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
     private static final String TAG = ProfileActivity.class.getSimpleName();
     private ProgressDialog loading;
     EditText edtnama, edtEmail, edtPhone, edtAlamat;
@@ -49,7 +49,6 @@ public class ProfileActivity extends AppCompatActivity {
     double latitude, longitude;
 
     Button btnSave;
-    private Toolbar toolbar;
     HashMap<String, String> user;
     SessionManager session;
     RadioGroup RdGrup;
@@ -58,11 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("My Profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         session = new SessionManager(getApplicationContext());
         user = session.getUserDetails();
         userid = user.get(SessionManager.KEY_PASSENGER_ID);

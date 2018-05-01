@@ -42,8 +42,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class FlashDealActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+public class FlashDealActivity extends BaseActivity {
     String id, URL, nama, idProduk, gambar, satuan;
     private SliderLayout mDemoSlider;
     private TextView teksNama, teksTanggal, teksHarga, teksHargaAsli, teksPoin, teksQty, teksSisa, deskripsi, total;
@@ -57,11 +56,7 @@ public class FlashDealActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_deal);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getIntent().getStringExtra("nama"));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         teksNama = (TextView) findViewById(R.id.nama);
         teksTanggal = (TextView) findViewById(R.id.tanggal);
         teksHarga = (TextView) findViewById(R.id.harga);

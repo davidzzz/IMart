@@ -1,6 +1,7 @@
 package com.imart.shop;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -30,26 +32,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ProdukDetailActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+public class ProdukDetailActivity extends BaseActivity {
     String id, URL, nama, gambar;
     private SliderLayout mDemoSlider;
-    private TextView teksNama, teksHarga, teksPoin, teksQty, deskripsi, total;
+    private TextView teksNama, teksHarga, teksHargaDiskon, teksPoin, teksQty, deskripsi, total;
     private Button order;
-    int harga, qty, poin;
+    int harga, hargaDiskon, qty, poin;
     Cart cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produk_detail);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getIntent().getStringExtra("nama"));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         teksNama = (TextView) findViewById(R.id.nama);
         teksHarga = (TextView) findViewById(R.id.harga);
+        teksHargaDiskon = (TextView) findViewById(R.id.hargaDiskon);
         teksPoin = (TextView) findViewById(R.id.poin);
         teksQty = (TextView) findViewById(R.id.qty);
         deskripsi = (TextView) findViewById(R.id.deskripsi);
@@ -68,7 +66,7 @@ public class ProdukDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 qty++;
-                int SubTotal = qty * harga;
+                int SubTotal = qty * (hargaDiskon != 0 ? hargaDiskon : harga);
                 if (cart != null) {
                     cart.setQuantity(qty);
                     cart.setTotal(SubTotal);
@@ -77,7 +75,7 @@ public class ProdukDetailActivity extends AppCompatActivity {
                     cart.setIdMenu(id);
                     cart.setNamaMenu(nama);
                     cart.setQuantity(qty);
-                    cart.setHarga(harga);
+                    cart.setHarga(hargaDiskon != 0 ? hargaDiskon : harga);
                     cart.setPoin(poin);
                     cart.setGambar(gambar);
                     cart.setTotal(SubTotal);
@@ -98,7 +96,7 @@ public class ProdukDetailActivity extends AppCompatActivity {
                     cart = null;
                 } else if (qty > 1) {
                     qty--;
-                    int SubTotal = qty * harga;
+                    int SubTotal = qty * (hargaDiskon != 0 ? hargaDiskon : harga);
                     if (cart != null) {
                         cart.setQuantity(qty);
                         cart.setTotal(SubTotal);
@@ -107,7 +105,7 @@ public class ProdukDetailActivity extends AppCompatActivity {
                         cart.setIdMenu(id);
                         cart.setNamaMenu(nama);
                         cart.setQuantity(qty);
-                        cart.setHarga(harga);
+                        cart.setHarga(hargaDiskon != 0 ? hargaDiskon : harga);
                         cart.setPoin(poin);
                         cart.setGambar(gambar);
                         cart.setTotal(SubTotal);
@@ -157,18 +155,27 @@ public class ProdukDetailActivity extends AppCompatActivity {
                 gambar = feedObj.getString("gambar");
                 nama = feedObj.getString("nama_produk");
                 harga = Integer.parseInt(feedObj.getString("harga"));
+                if (!feedObj.getString("harga_diskon").equals("null")) {
+                    hargaDiskon = Integer.parseInt(feedObj.getString("harga_diskon"));
+                } else {
+                    hargaDiskon = 0;
+                }
                 poin = Integer.parseInt(feedObj.getString("poin"));
                 teksNama.setText(nama);
                 teksHarga.setText("Rp. " + harga);
+                if (hargaDiskon != 0) {
+                    teksHarga.setPaintFlags(teksHarga.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    teksHargaDiskon.setText("Rp. " + hargaDiskon);
+                }
                 teksPoin.setText("Poin : " + poin);
                 teksQty.setText(qty + "");
-                total.setText("Total: Rp. " + (qty * harga));
+                total.setText("Total: Rp. " + (qty * (hargaDiskon != 0 ? hargaDiskon : harga)));
                 if (qty > 0) {
                     cart = new Cart();
                     cart.setIdMenu(id);
                     cart.setNamaMenu(nama);
                     cart.setQuantity(qty);
-                    cart.setHarga(harga);
+                    cart.setHarga(hargaDiskon != 0 ? hargaDiskon : harga);
                     cart.setPoin(poin);
                     cart.setGambar(gambar);
                     cart.setTotal(qty * harga);

@@ -50,8 +50,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-    Toolbar mToolbar;
+public class SearchActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     private GridView listview;
     private AdapterSinz adapter = null;
     private List<ItemMenu> arraylist;
@@ -72,10 +71,6 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Constant.COLOR));
         txtTotal = (TextView) findViewById(R.id.txtTotal);
         arraylist = new ArrayList<ItemMenu>();
         total_notif = (TextView) findViewById(R.id.total_notif);
