@@ -25,5 +25,10 @@
             android:fitsSystemWindows="true"
             android:scaleType="fitXY"
             android:src="@drawable/loading" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:id="@+id/nama"/>
     </LinearLayout>
 </RelativeLayout>

@@ -52,7 +52,7 @@ public class SubKategoriActivity extends BaseActivity implements SearchView.OnQu
     ProgressBar loading;
     HashMap<String, String> user;
     Timer timer = new Timer();
-    boolean reset = true;
+    boolean reset = true, list;
     Long time = 0L;
     SubKategoriFragment kategoriFragment = new SubKategoriFragment();
     SearchFragment searchFragment = new SearchFragment();
@@ -67,11 +67,13 @@ public class SubKategoriActivity extends BaseActivity implements SearchView.OnQu
         akses = user.get(SessionManager.KEY_AKSES);
         colorValue = getIntent().getIntExtra("color", 0);
         id = getIntent().getStringExtra("id");
+        list = getIntent().getBooleanExtra("listView", true);
         LinearLayout layout = (LinearLayout)findViewById(R.id.activity_kategori);
         layout.setBackgroundColor(colorValue);
         Bundle bundle = new Bundle();
         bundle.putInt("color", colorValue);
         bundle.putString("id", id);
+        bundle.putBoolean("listView", list);
         kategoriFragment.setArguments(bundle);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.pager, kategoriFragment);

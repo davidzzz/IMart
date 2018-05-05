@@ -32,11 +32,13 @@ import java.util.HashMap;
 
 public class SubKategoriFragment extends Fragment {
     View view;
-    ListView gridView;
+    GridView gridView;
+    ListView listView;
     ArrayList<ItemSub> itemList;
     SubAdapter adapter;
     String URLKATE, akses, id;
     int colorValue;
+    boolean list;
     TextView countCart;
     SessionManager session;
     ProgressBar loading;
@@ -54,26 +56,45 @@ public class SubKategoriFragment extends Fragment {
         if (bundle != null) {
             colorValue = bundle.getInt("color", 0);
             id = bundle.getString("id");
+            list = bundle.getBoolean("listView");
         }
-        gridView = (ListView) view.findViewById(R.id.gridView);
+        gridView = (GridView) view.findViewById(R.id.gridView);
+        listView = (ListView) view.findViewById(R.id.listView);
         loading = (ProgressBar) view.findViewById(R.id.prgLoading);
         itemList = new ArrayList<>();
         adapter = new SubAdapter(getActivity(), itemList, colorValue);
-        gridView.setAdapter(adapter);
+        adapter.setListView(list);
+        if (list) {
+            listView.setAdapter(adapter);
+        } else {
+            gridView.setAdapter(adapter);
+        }
         URLKATE = Constant.URLAPI + "key=" + Constant.KEY + "&tag=subkat&id=" + id;
         daftarKategori();
         HashMap<String, String> user = session.getUserDetails();
         String akses = user.get(SessionManager.KEY_AKSES);
         if (akses.equals("1")) {
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                    ItemSub item = (ItemSub) parent.getItemAtPosition(position);
-                    Intent intentlist = new Intent(getActivity(), ProdukActivity.class);
-                    intentlist.putExtra("id", item.getId());
-                    startActivity(intentlist);
-                }
-            });
+            if (list) {
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                        ItemSub item = (ItemSub) parent.getItemAtPosition(position);
+                        Intent intentlist = new Intent(getActivity(), ProdukActivity.class);
+                        intentlist.putExtra("id", item.getId());
+                        startActivity(intentlist);
+                    }
+                });
+            } else {
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                        ItemSub item = (ItemSub) parent.getItemAtPosition(position);
+                        Intent intentlist = new Intent(getActivity(), ProdukActivity.class);
+                        intentlist.putExtra("id", item.getId());
+                        startActivity(intentlist);
+                    }
+                });
+            }
         }
         return view;
     }

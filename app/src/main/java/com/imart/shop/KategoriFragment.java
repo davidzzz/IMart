@@ -55,7 +55,7 @@ public class KategoriFragment extends Fragment {
         if (bundle != null) {
             colorValue = bundle.getInt("color", 0);
         }
-        gridView = (ListView) view.findViewById(R.id.gridView);
+        gridView = (ListView) view.findViewById(R.id.listView);
         loading = (ProgressBar) view.findViewById(R.id.prgLoading);
         itemList = new ArrayList<>();
         adapter = new SubAdapter(getActivity(), itemList, colorValue);
@@ -73,6 +73,7 @@ public class KategoriFragment extends Fragment {
                     intentlist.putExtra("color", colorValue);
                     intentlist.putExtra("nama", item.getName());
                     intentlist.putExtra("id", item.getId());
+                    intentlist.putExtra("listView", true);
                     startActivity(intentlist);
                 }
             });

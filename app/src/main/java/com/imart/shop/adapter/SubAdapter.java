@@ -21,17 +21,23 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SubAdapter extends BaseAdapter {
     private Context activity;
     private LayoutInflater inflater;
     private List<ItemSub> itemList;
     private int colorValue;
+    private boolean list = true;
 
     public SubAdapter(Activity activity, List<ItemSub> itemList, int colorValue) {
         this.activity = activity;
         this.itemList = itemList;
         this.colorValue = colorValue;
+    }
+
+    public void setListView(boolean list) {
+        this.list = list;
     }
 
     @Override
@@ -57,13 +63,20 @@ public class SubAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.sub_item, null);
 
         SquareImage thumbNail = (SquareImage) convertView.findViewById(R.id.imgThumb);
+        TextView teksNama = (TextView) convertView.findViewById(R.id.nama);
         ItemSub itemlatest = itemList.get(position);
+        teksNama.setText(itemlatest.getName());
         RelativeLayout layout = (RelativeLayout) convertView.findViewById(R.id.layout_list);
         layout.setBackgroundColor(colorValue);
         Glide.with(activity)
                 .load(Constant.URLADMIN + itemlatest.getImage())
                 .placeholder(R.drawable.loading)
                 .into(thumbNail);
+        if (activity.getClass().getName().equals("com.imart.shop.MainActivity") || !list) {
+            teksNama.setVisibility(View.GONE);
+        } else if (activity.getClass().getName().equals("com.imart.shop.KategoriActivity") || list) {
+            thumbNail.setVisibility(View.GONE);
+        }
 
         return convertView;
     }

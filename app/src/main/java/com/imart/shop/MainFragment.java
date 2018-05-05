@@ -133,6 +133,7 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     intentlist.putExtra("color", colorValue);
                     intentlist.putExtra("nama", object.getName());
                     intentlist.putExtra("id", object.getId());
+                    intentlist.putExtra("listView", false);
                     startActivity(intentlist);
                 }
             });
